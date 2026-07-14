@@ -12,7 +12,9 @@ authors = [
   { name = "Your Name", email = "name@example.org" },
 ]
 license = { text = "MIT" }
-dependencies = []
+dependencies = [
+  "streamlit>=1.36",
+]
 
 [dependency-groups]
 dev = [

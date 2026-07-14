@@ -21,7 +21,9 @@ Publish architecture changes, migrations, enabling work, or dependencies only wh
 
 ## Issue lineage
 
-Include a human-readable documentation lineage section and a machine-readable marker:
+For user-story issues, preserve the canonical user-story block as the visible issue description. Do not add a separate visible traceability section that changes the user-story format.
+
+Include the machine-readable marker after the copied story block:
 
 ```html
 <!-- workflow-link

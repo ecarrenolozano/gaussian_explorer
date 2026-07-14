@@ -7,6 +7,7 @@
 - Publication batch:
 - Documentation revision:
 - Proposed issue count:
+- Proposed relationship writes:
 - Warnings:
 
 ## Proposed Issues
@@ -25,7 +26,29 @@
 
 #### Proposed Body
 
-<Complete issue body, including documentation lineage and workflow-link marker.>
+<For user-story issues, copy the canonical user-story block from 01_user_stories.md in the same format, then append only the hidden workflow-link marker.>
+
+## Proposed Issue Relationships
+
+| Parent Issue | Child Issue | Relationship Type | Platform Representation | Planned Write | Fallback or Warning |
+|---|---|---|---|---|---|
+
+## Delivery Plan
+
+### Priority Order
+
+| Priority | Issue | Why This Priority | Unblocks |
+|---|---|---|---|
+
+### Parallelization Groups
+
+| Group | Issues | Start Condition | Notes |
+|---|---|---|---|
+
+### Kanban Guidance
+
+| Board Focus | Issues | Handoff or Checkpoint |
+|---|---|---|
 
 ## Approval
 
