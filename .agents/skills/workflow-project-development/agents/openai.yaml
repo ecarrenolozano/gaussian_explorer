@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Development Workflow"
+  short_description: "Start, resume, and navigate the existing SDLC skills"
+  default_prompt: "Inspect this project's workflow state, explain where we are, and guide me through the next valid stage using the existing specialist skills."

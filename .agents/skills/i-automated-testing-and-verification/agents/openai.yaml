@@ -1,0 +1,3 @@
+interface:
+  display_name: "Automated Testing and Verification"
+  short_description: "Verify an exact build with risk-based automated tests."

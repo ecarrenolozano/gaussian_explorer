@@ -1,0 +1,3 @@
+interface:
+  display_name: "User Story Technical Readiness"
+  short_description: "Approve implementation-ready stories against versioned architecture."

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Architecture and Design"
+  short_description: "Create and approve Mermaid-first architecture from product-approved stories."

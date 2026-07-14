@@ -1,0 +1,54 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gaussian-explorer"
+version = "0.1.0"
+description = "A Python project developed with an AI-assisted, approval-gated SDLC workflow."
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+  { name = "Your Name", email = "name@example.org" },
+]
+license = { text = "MIT" }
+dependencies = []
+
+[dependency-groups]
+dev = [
+  "coverage[toml]>=7.9",
+  "hatchling>=1.27",
+  "mypy>=1.16",
+  "pre-commit>=4.2",
+  "pytest>=8.4",
+  "pytest-cov>=6.2",
+  "ruff>=0.12",
+]
+docs = [
+  "mkdocs>=1.6",
+  "zensical>=0.0.9",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gaussian_explorer"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=gaussian_explorer --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["gaussian_explorer"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "RUF"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+mypy_path = "src"

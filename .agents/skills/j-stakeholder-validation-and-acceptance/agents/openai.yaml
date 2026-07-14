@@ -1,0 +1,3 @@
+interface:
+  display_name: "Stakeholder Validation and Acceptance"
+  short_description: "Run manual validation and record stakeholder acceptance."

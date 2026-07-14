@@ -1,0 +1,3 @@
+interface:
+  display_name: "Requirements Clarifier"
+  short_description: "Clarify informal requirements into a structured handoff."

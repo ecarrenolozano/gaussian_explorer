@@ -1,0 +1,3 @@
+interface:
+  display_name: "Project Context Interpretation"
+  short_description: "Interpret project context for downstream SDLC work."
