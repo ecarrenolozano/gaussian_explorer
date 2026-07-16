@@ -1,26 +1,19 @@
-# Rollback and Recovery Plan
+# Rollback or Forward-Recovery Plan
 
-## Scope
+## Scope and Triggers
 
-- Deployment-plan version:
-- Release candidate:
-- Target environment:
-- Responsible decision-maker:
+## Decision Authority
 
-## Triggers
+## Application and Worker Recovery
 
-## Application Recovery
+## Configuration Recovery
 
-## Data and Migration Recovery
+## Data-Store Recovery
 
-## Configuration and Dependency Recovery
+## Cache, Message, and External-System Recovery
 
-## Verification After Recovery
+## Verification
 
-## Communication and Incident Recording
+## Communication
 
-## Forward-Recovery Procedure
-
-Use this section when rollback is unsafe or impossible.
-
-## Unresolved Risks or Blockers
+## Conditions Requiring Forward Recovery

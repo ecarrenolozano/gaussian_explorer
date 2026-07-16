@@ -1,28 +1,26 @@
 ---
 name: f-user-story-technical-readiness
-description: evaluate product-approved user stories against the exact approved architecture version to determine per-story implementation readiness and publication eligibility. use after e-architecture-and-design and before g-create-repository-issues to validate architecture paths, interfaces, data, dependencies, quality attributes, delivery, operations, verification, and technical uncertainty; route defects to the owning upstream skill and record version-bound technical approval.
+description: evaluate product-approved user stories against the exact approved architecture version to determine per-story implementation readiness and repository-publication eligibility. use after e-architecture-and-design to verify the relevant arc42 concerns, c4 system and container path, component or data-model ownership, runtime and deployment behavior, quality requirements, cross-cutting concepts, decisions, implementation mapping, dependencies, verification needs, and technical uncertainty; route defects to the owning skill and record version-bound technical approval.
 ---
 
 # User Story Technical Readiness
 
 ## Purpose
 
-Determine whether each reviewed user story can be implemented and verified safely within the exact approved architecture version. Identify technical blockers, required upstream changes, external dependencies, and genuine investigation needs, then record which stories are eligible for repository issue publication.
-
-Assess readiness without rewriting stories, redesigning architecture, or publishing issues.
+Determine whether each reviewed story can be implemented and verified safely within the exact approved architecture version. Confirm that the architecture provides sufficient story-specific evidence from the arc42 document, C4 model, detailed design, decisions, and implementation mapping without redesigning the architecture.
 
 ## Governing Rules
 
-- Require valid product approval for the exact current story version and valid architecture approval bound to that version.
-- Review only active stories with stable identifiers, traceability, and a current story-to-architecture mapping.
-- Use story, architecture, repository, environment, and explicit team-standard evidence; do not invent contracts, thresholds, ownership, infrastructure, or test conditions.
-- Distinguish requirement gaps, story defects, architecture changes, technical investigations, external blockers, and artifact-state failures.
-- Assign one primary routing status per story and preserve secondary findings separately.
-- Recommend story splitting or architecture changes without performing them.
-- Define spike candidates only for decision-relevant uncertainty; do not disguise implementation as research.
-- Preserve upstream artifacts, versions, identifiers, approvals, report history, and prior technical decisions.
-- Bind every assessment and approval to exact story and architecture versions.
-- Do not publish repository issues, create implementation plans, write test plans, or produce code.
+- Require valid product approval for the exact story version and valid architecture approval bound to it.
+- Review only active stories with stable identifiers and current traceability.
+- Treat `01_architecture_traceability.md` as the primary story-to-architecture path and verify its referenced files.
+- Require only arc42 sections relevant to the reviewed story. Do not reject a story because an unrelated section is brief or explicitly not applicable.
+- Do not create or modify architecture goals, constraints, containers, components, runtime views, deployment views, cross-cutting concepts, data models, code-level design, quality scenarios, risks, or architecture decisions.
+- Use repository and environment evidence without replacing canonical approvals.
+- Distinguish requirement gaps, story defects, architecture changes, technical investigations, external blockers, and inconsistent artifact state.
+- Assign one primary routing status per story.
+- Bind each review and approval to exact story and architecture versions.
+- Do not publish issues, create implementation plans, tests, or code.
 
 ## Canonical Files
 
@@ -32,68 +30,53 @@ Read in this order:
 2. `sdlc_docs/01_requirements/01_user_stories.md`
 3. `sdlc_docs/01_requirements/02_traceability_matrix.md`
 4. `sdlc_docs/01_requirements/03_user_story_product_readiness.md`
-5. `sdlc_docs/02_architecture/00_architecture_overview.md`
-6. `sdlc_docs/02_architecture/01_story_architecture_map.md`
-7. Relevant component documents and Architecture Decision Records under `sdlc_docs/02_architecture/`
-8. `sdlc_docs/01_requirements/04_user_story_technical_readiness.md`
+5. `sdlc_docs/02_architecture/00_architecture_document.md`
+6. `sdlc_docs/02_architecture/01_architecture_traceability.md`
+7. `sdlc_docs/02_architecture/workspace.dsl`
+8. Relevant container, component, data-model, and decision documents under `sdlc_docs/02_architecture/`
+9. `sdlc_docs/01_requirements/04_user_story_technical_readiness.md`
 
-Use relevant repository, interface, environment, and team-standard evidence when available. Do not treat it as a substitute for canonical product or architecture approval.
-
-Create the output report from its template when absent. Treat legacy `04_technical_readiness.md` as read-only history, not current approval evidence.
+Create the technical-readiness report from its template when absent.
 
 ## Core Workflow
 
-1. Gather and validate upstream state.
-2. Establish the technical review scope.
-3. Trace stories through the approved architecture.
-4. Evaluate technical readiness.
-5. Determine status, routing, dependencies, and spike candidates.
-6. Persist the technical-readiness report.
-7. Record or verify technical approval.
-
 ### 1. Gather and Validate Upstream State
 
-Read and follow `references/input-and-version-gate.md`. Identify the exact current story and architecture versions, verify product and architecture approval, validate mapping and artifact integrity, and stop when state is stale or inconsistent.
+Read `references/input-and-version-gate.md`. Verify exact story and architecture versions, product and architecture approval, active story identifiers, and architecture package integrity.
 
-### 2. Establish the Technical Review Scope
+### 2. Establish the Review Scope
 
-Review all active stories by default. Review a user-selected subset when requested. Assign a sequential `TR-XXX` review identifier and record the reviewed story IDs, upstream versions, available technical evidence, and review mode.
+Review all active stories by default or a user-selected subset. Assign a sequential `TR-XXX` review identifier and record reviewed story IDs, versions, evidence, and review mode.
 
-A selected review may approve implementation-ready stories independently when their dependencies permit. It does not approve unreviewed stories.
+### 3. Trace Each Story Through the Architecture
 
-### 3. Trace Stories Through the Approved Architecture
-
-For each reviewed story, follow the architecture mapping through responsible containers, components, interfaces, data, ADRs, deployment, and operational paths. Verify that references exist and identify any cross-story or external dependency.
+For every story, verify a path through relevant arc42 concerns, software system, owning container, component or data model, responsibility, runtime or deployment behavior, decisions, and implementation mapping. Confirm that referenced detailed documents exist when the design requires them.
 
 ### 4. Evaluate Technical Readiness
 
-Read `references/technical-readiness-checklist.md`. Apply only relevant criteria and record evidence, unknowns, severity, verification needs, and blocking conditions. Do not re-run product discovery unless a technical finding exposes a missing product decision.
+Read `references/technical-readiness-checklist.md`. Apply only relevant criteria. Record evidence, unknowns, severity, verification needs, mapping status, dependencies, and blockers.
 
-### 5. Determine Status, Routing, Dependencies, and Spike Candidates
+### 5. Determine Status and Routing
 
-Read `references/status-and-routing.md`. Assign one primary status to every reviewed story and determine publication eligibility. Read `references/spike-rules.md` only when genuine technical uncertainty requires investigation. Do not modify upstream artifacts.
+Read `references/status-and-routing.md`. Assign one primary status, determine publication eligibility, and create a spike candidate only for decision-relevant uncertainty. Do not modify upstream artifacts.
 
-### 6. Persist the Technical-Readiness Report
+### 6. Persist the Review
 
-Read `references/persistence.md`. Load `templates/technical-readiness-report.md` only when creating or repairing the report. Load `templates/technical-spike-candidate.md` only when a spike candidate is needed.
-
-Append a new review section and history row, preserve prior reviews, update the Current Gate marker, and verify report consistency before writing.
+Read `references/persistence.md`. Append the review, update current gate state, preserve history, and verify version and story coverage before writing.
 
 ### 7. Record or Verify Technical Approval
 
-Read `references/approval-gate.md` when approval is requested or before issue publication. Approve only stories assessed `implementation-ready`, bound to unchanged approved upstream versions, and explicitly approved by a known human. A newer review covering an approved story resets that story to pending; a newer story version, architecture version, or upstream approval state invalidates all affected technical approval.
+Read `references/approval-gate.md`. Approve only stories assessed `implementation-ready`, bound to unchanged approved story and architecture versions, and explicitly approved by a known human.
 
 ## Boundary with Other Skills
 
-- Route missing product decisions to `b-requirements-clarifier`, followed by `c-create-user-stories` and `d-user-story-product-readiness`.
-- Route story wording, splitting, acceptance, priority, registry, or traceability changes to `c-create-user-stories`, then require product reapproval and architecture impact review.
-- Route system-wide or cross-story architecture changes and ADRs to `e-architecture-and-design`.
-- Recommend technical spike candidates here; let `g-create-repository-issues` publish approved spike or implementation issues.
-- Do not alter product approval, architecture approval, user stories, architecture documents, repository issues, implementation plans, tests, or code.
+- Route missing product decisions to `b-requirements-clarifier`, followed by story regeneration and product review.
+- Route story defects to `c-create-user-stories`, followed by `d-user-story-product-readiness` and architecture impact review.
+- Route missing or conflicting arc42 content, C4 views, containers, components, data design, runtime or deployment behavior, cross-cutting concepts, quality scenarios, risks, code-level design, decisions, or architecture mappings to `e-architecture-and-design`.
+- Let `g-create-repository-issues` publish approved stories and spike candidates.
+- Do not alter architecture, user stories, approvals, issues, plans, tests, or code.
 
 ## Resources
-
-Load only when referenced by the workflow:
 
 - `references/input-and-version-gate.md`
 - `references/technical-readiness-checklist.md`

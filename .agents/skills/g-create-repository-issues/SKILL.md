@@ -1,131 +1,94 @@
 ---
 name: g-create-repository-issues
-description: publish approved implementation-ready user stories and approved technical spike candidates as traceable github or gitlab issues, and reconcile repository-created issues with sdlc_docs. use after technical readiness to preview external writes, detect duplicates, preserve documentation lineage, maintain the repository issue registry, and repair documentation drift without silently changing approved scope.
+description: Publish technically approved user stories or spike candidates as repository tracker issues, reconcile repository tracker issues with SDLC documentation, and triage direct contributor-created tracker issues at scale across platforms such as GitHub, GitLab, GitKraken, or other issue trackers. Use after f-user-story-technical-readiness when Codex must verify story, architecture, and technical-review lineage; prevent duplicates; show exact issue descriptions and metadata in chat for approval before tracker writes; create or update approved issues; verify publication; update the repository issue registry; classify unlinked tracker issues as duplicates, similar existing scope, bugs, new requirement candidates, out of scope, not actionable, or needing human review; create intake reconciliation reports; or route unlinked, duplicate, diverged, or contributor-created issues.
 ---
 
 # Create Repository Issues
 
 ## Purpose
 
-Create or reconcile repository issues without breaking traceability between approved workflow documentation and repository work tracking.
+Publish approved outcome-level work to a repository issue tracker and keep tracker state mapped to canonical `sdlc_docs`.
 
-Use publication mode to create issues from approved sources. Use reconciliation mode to detect and classify issues created or changed directly in the repository.
+Accept direct repository issues as raw intake signals, not implementation-ready work, until they are reconciled against approved stories, architecture, technical readiness, existing canonical issues, and implementation plans.
 
-## Governing Rules
+## Non-Negotiables
 
-- Treat every repository write as an external operation requiring explicit approval of the exact preview.
-- Publish only work supported by an authoritative approved source.
-- Do not invent scope, technical tasks, labels, milestones, assignees, or dependencies.
-- Publish each approved user story as exactly one repository issue; represent story-to-story dependency or hierarchy as issue relationships, not duplicate issues.
-- For user-story issues, make the issue description preserve the same human-readable format as the canonical user story block in `01_user_stories.md`; do not rewrite it into Summary/Motivation/Traceability sections.
-- Keep `sdlc_docs` authoritative for approved scope and GitHub or GitLab authoritative for operational issue state.
-- Never silently copy repository scope changes back into approved documentation.
-- Use human-readable names and workflow identifiers; do not create implementation naming conventions.
-- On uncertain write results, verify before retrying.
+- Publish only versioned work with current product, architecture, and technical approval.
+- Treat `sdlc_docs` as the source of approved scope; treat the issue tracker as the source of operational issue state.
+- Show the complete approval preview in chat before any tracker write: repository, title, exact body, labels, milestone, assignees, dependencies, source lineage, architecture lineage, and warnings.
+- Do not use a separate approval/proposal file unless the user asks for one, accepts that format, or the file is itself the deliverable.
+- Create or update only issues explicitly approved from the chat preview.
+- Link to architecture and decisions; do not duplicate long architecture text in issue bodies.
+- Search for duplicates by source identifier, lineage marker, registry mapping, and tracker results before writing.
+- Verify every tracker write by reading the created or updated issue before claiming success.
+- Update the repository issue registry only after verification. Preserve partial-publication facts if registry persistence fails.
+- Do not convert bulk contributor-created issues directly into stories or plans. Reconcile, cluster, classify, and promote only distinct new or changed scope.
+- Require approval before bulk tracker mutations such as closing issues, adding labels, posting comments, or rewriting bodies.
+- Do not create implementation plans or file-level tasks; route that work to Skill H.
 
 ## Canonical Files
 
-Read when applicable:
+Read the files needed for the selected scope:
 
 - `sdlc_docs/01_requirements/01_user_stories.md`
-- `sdlc_docs/01_requirements/02_traceability_matrix.md`
+- `sdlc_docs/01_requirements/03_user_story_product_readiness.md`
 - `sdlc_docs/01_requirements/04_user_story_technical_readiness.md`
-- `sdlc_docs/02_architecture/01_story_architecture_map.md`
-- `sdlc_docs/03_implementation/00_repository_issue_registry.md`
-- repository-native issue forms, templates, labels, milestones, and contribution rules
+- `sdlc_docs/02_architecture/00_architecture_document.md`
+- `sdlc_docs/02_architecture/01_architecture_traceability.md`
+- relevant files under `sdlc_docs/02_architecture/decisions/`
+- relevant detailed architecture files such as `sdlc_docs/02_architecture/containers/`, only when present and referenced
+- `sdlc_docs/03_implementation/00_repository_issue_registry.md`; create it from `templates/repository-issue-registry.md` when absent
+- existing reconciliation reports under `sdlc_docs/03_implementation/intake_reconciliation/`, when present
 
-Create the registry from `templates/repository-issue-registry.md` when missing.
+## Modes
 
-## Core Workflow
+- **Publication:** create or update approved repository issues, verify them, and register mappings.
+- **Reconciliation:** compare tracker issues with the registry and documentation, classify differences, and route them.
+- **Intake reconciliation:** process direct contributor-created tracker issues, cluster duplicates and similar issues, identify new requirement candidates or bugs, and produce a reconciliation batch report before any SDLC promotion.
 
-### 1. Determine the Operating Mode
+## Publication Workflow
 
-Use **publication mode** when creating approved issues. Use **reconciliation mode** when comparing repository issues with the local registry or investigating directly created issues.
+1. Select repository, platform, source stories or spike candidates, architecture version, and technical review.
+2. Validate the gate with `references/input-and-publication-gate.md`. Stop on stale approval, missing lineage, unresolved architecture scope, or contradictory state.
+3. Inspect repository issue forms, contribution rules, labels, milestones, permissions, and current issues. Read `references/platform-and-write-safety.md` before any tracker write.
+4. Detect duplicates from registry, tracker search, source identifiers, and lineage markers. Use `references/reconciliation.md` for possible matches or direct repository-originated issues.
+5. Prepare each issue with `templates/issue-template-repository.md`. Preserve the template sections: story heading, `Description`, `Assumptions & Details`, `Source and constraints`, and acceptance scenarios.
+6. Show the complete approval preview in chat. Use one compact metadata block per issue plus the exact body. If the set is long, keep formatting scannable, but do not replace the chat preview with a file.
+7. Wait for explicit approval of the exact repository, issue bodies, labels, milestones, assignees, and dependencies shown in chat. If approval covers only part of the set, publish only that part or show the missing items and ask again.
+8. Create or update approved issues only. Verify issue number, URL, body, lineage, labels, milestone, assignees, and state by reading the issue after the write.
+9. Update `sdlc_docs/03_implementation/00_repository_issue_registry.md` with verified mappings. Follow `references/persistence.md` if publication succeeds but registry update fails.
 
-### 2. Validate the Repository and Upstream State
+## Reconciliation Workflow
 
-Confirm the repository, platform, access level, and exact source artifacts. For story issues, require an `implementation-ready` story with valid human technical approval for the current story and architecture versions. For spikes, require an approved spike candidate from technical readiness.
+Compare repository issues, registry rows, and canonical SDLC documentation. Classify each difference with `references/reconciliation.md`. Require confirmation before binding any unregistered tracker issue to approved documentation.
 
-Read `references/input-and-publication-gate.md`.
+For contributor-created or otherwise unlinked issues:
 
-### 3. Select and Classify Work
-
-Identify the authoritative source type and source identifier. Do not publish architecture changes, migrations, enabling work, or dependencies unless an upstream artifact explicitly defines them.
-
-### 4. Detect Existing or Divergent Issues
-
-Search machine-readable lineage first, then source identifiers and title similarity. Classify existing issues as linked, missing from registry, missing repository lineage, candidate match, unlinked, duplicate, or diverged.
-
-Read `references/reconciliation.md` when reconciling or when a possible match exists.
-
-### 5. Prepare the Exact Preview
-
-Prepare complete issue bodies and metadata, including repository, title, body, labels, milestone, assignees, dependencies, source lineage, proposed issue relationships, minimal delivery plan, and warnings. Store the preview in:
-
-`sdlc_docs/03_implementation/01_repository_issue_preview.md`
-
-Use `templates/issue-preview.md`.
-
-For user-story issue bodies:
-
-- Copy the complete canonical story block from `01_user_stories.md`, preserving the same Markdown structure: `## US-...`, story metadata comment, `### **User story**`, `### **Source and constraints**`, and `### **Acceptance criteria**` with scenario headings and Given/When/Then lines.
-- Do not replace the story block with repository-template prose such as `# Summary`, `# Motivation`, or `# Traceability`.
-- Add the required `workflow-link` HTML marker after the copied story block. Keep it hidden as a comment so the visible issue description still reads like the user-story document.
-- Put repository labels, milestone, assignees, relationship writes, and delivery-order guidance in preview metadata, not in the issue body.
-
-For approved user stories, default to one issue per story. When a story depends on another approved story, include a proposed relationship plan:
-
-- **GitHub:** after both issues exist, add the dependency issue as a sub-issue of the dependent story issue when the relationship is unambiguous and the child issue does not need multiple parents. GitHub CLI supports `gh issue create --parent` for new sub-issues and `gh issue edit PARENT --add-sub-issue CHILD` for existing issues. When a dependency edge cannot be represented as a sub-issue because it would require multiple parents, prefer GitHub's native issue dependency relationship (`gh issue edit DEPENDENT --add-blocked-by DEPENDENCY`) before falling back to body text only.
-- **GitLab:** use native linked issues when available. Prefer `blocks` / `is_blocked_by` for dependency semantics; use `relates_to` only when the dependency direction is unclear or the GitLab tier/API does not support blocking links. Do not claim GitLab sub-issues unless the target GitLab instance exposes that feature.
-- **Fallback:** if the platform cannot represent the relationship, keep the dependency in the issue body and record the skipped relationship with a warning.
-
-Every proposed relationship is an external write. Preview it explicitly with parent, child, relationship type, platform command/API intent, and any fallback reason.
-
-Also include a minimal delivery plan derived from the approved dependency graph:
-
-- Include an explicit priority order for attending issues. Priority is based on dependency unblocking, critical-path position, integration risk, and user-visible milestone value.
-- Include explicit parallelization groups. Issues in the same group can usually be started together once the listed start condition is met.
-- Include a small Kanban guidance table with suggested board focus, start condition, and handoff/checkpoint. Keep it short enough for a senior developer to assign work without reading a full implementation plan.
-- Do not assign named people unless the user explicitly instructs you to assign users.
-- For the current Gaussian Explorer shape, the useful pattern is: upload first; variable selection and settings next; model fitting as the central integration issue; visualization and tabular export in parallel after fitting; plot/reproducibility after visualization; invalid-input feedback threaded across upload, selection, and fitting rather than deferred to the end.
-
-### 6. Obtain Publication Approval
-
-Require explicit approval of the exact preview. Approval of stories, architecture, or technical readiness does not authorize repository writes.
-
-### 7. Publish and Verify
-
-Create or update only the approved issues and approved issue relationships. Verify issue identifiers, URLs, applied metadata, and relationship state. Do not blindly retry ambiguous writes.
-
-### 8. Update the Repository Issue Registry
-
-Record verified mappings in:
-
-`sdlc_docs/03_implementation/00_repository_issue_registry.md`
-
-If issue publication succeeds but registry persistence fails, report partial completion and repair the registry without recreating the issue.
-
-Record verified issue relationships separately from issue mappings so future reconciliation can distinguish scope publication from platform hierarchy/link state.
-
-### 9. Reconcile Repository-Originated Issues
-
-Classify unregistered issues and route them to the appropriate workflow owner. Require confirmation before binding an issue to existing documentation. Record reconciliation history without treating repository text as approved scope.
+1. Collect the candidate issue set from the tracker and registry. Identify issues missing SDLC lineage markers.
+2. Cluster issues by topic, source markers, titles, bodies, labels, acceptance behavior, linked PRs, and similarity to approved stories, canonical issues, and implementation plans.
+3. Classify each issue as `canonical-linked`, `duplicate`, `similar-existing-scope`, `bug`, `new-requirement-candidate`, `out-of-scope`, `not-actionable`, or `needs-human-review`.
+4. Prepare an intake reconciliation batch under `sdlc_docs/03_implementation/intake_reconciliation/` using the reconciliation templates. Include summary counts, clusters, proposed issue actions, and upstream routes.
+5. Show proposed tracker mutations in chat before writing: labels, comments, closures, body updates, or canonical links.
+6. After approval, perform only the approved tracker mutations, verify them by reading the affected issues, and update the registry and reconciliation index.
+7. Route promoted new requirement candidates to Skill B by appending or preparing input for `sdlc_docs/01_requirements/00_raw_ideas.md`. Do not create stories or implementation plans from intake issues inside Skill G.
 
 ## Boundary with Other Skills
 
-- Skill F determines technical readiness and spike candidates.
-- Skill G owns repository publication, registry maintenance, and reconciliation.
-- Skill H creates detailed implementation plans linked to published work items.
-- New product behavior returns to Skill B.
-- Story defects return to Skill C and Skill D.
-- Architecture changes return to Skill E.
-- Skill G does not implement work or create detailed code-level plans.
+- Skill F owns technical readiness and spike candidates.
+- Skill E owns architecture content and mappings.
+- Skill G owns issue publication, registry maintenance, and reconciliation.
+- Skill H owns implementation plans linked to published issues.
+- Skill B owns clarification of promoted new requirement candidates.
+- A lightweight bug path may keep confirmed implementation bugs in the tracker, but behavior-changing bugs must route upstream through requirements and architecture as needed.
 
 ## Resources
 
-- `references/input-and-publication-gate.md`
-- `references/reconciliation.md`
-- `references/platform-and-write-safety.md`
-- `references/persistence.md`
-- `templates/issue-preview.md`
-- `templates/repository-issue-registry.md`
+- `references/input-and-publication-gate.md`: gate checklist for publication.
+- `references/platform-and-write-safety.md`: tracker write and verification rules.
+- `references/reconciliation.md`: classification and routing for existing tracker issues.
+- `references/persistence.md`: registry update and partial-publication recovery.
+- `templates/issue-template-repository.md`: issue body template.
+- `templates/repository-issue-registry.md`: registry bootstrap template.
+- `templates/tracker-intake-summary.md`: reconciliation batch summary template.
+- `templates/tracker-issue-clusters.md`: clustered issue analysis template.
+- `templates/tracker-reconciliation-decisions.md`: proposed and verified issue-action decisions template.

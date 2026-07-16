@@ -1,13 +1,11 @@
-#### Spike Candidate: <Decision-Oriented Title>
+### Technical Spike Candidate
 
-- Affected stories: `<US-XXXX>`
-- Architecture elements: `<IDs or None>`
-- Primary question:
-- Why current evidence is insufficient:
-- Time box: `<value supplied by team | Unconfirmed>`
-- Investigation boundaries:
-  - In scope:
-  - Out of scope:
-- Required output:
+- Question:
+- Decision enabled:
+- Affected stories:
+- Affected architecture elements:
+- Scope:
+- Exclusions:
+- Expected evidence:
 - Completion condition:
-- Route after completion:
+- Status: `candidate | approved | rejected | completed`

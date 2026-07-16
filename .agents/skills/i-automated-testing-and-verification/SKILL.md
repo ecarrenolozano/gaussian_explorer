@@ -1,105 +1,80 @@
 ---
 name: i-automated-testing-and-verification
-description: plan, create, execute, and report automated technical verification for an exact implementation artifact. use after implementation to assess existing coverage and add applicable integration, end-to-end, regression, performance, security, compatibility, migration, recovery, or other risk-based automated tests without duplicating adequate developer tests or performing stakeholder acceptance.
+description: plan, create, select, execute, and report automated technical verification for an exact implementation artifact. use after implementation to derive integration, end-to-end, regression, performance, security, reliability, migration, recovery, and other applicable tests from approved stories, arc42 runtime and deployment views, c4 boundaries, cross-cutting concepts, quality scenarios, risks, architecture decisions, implementation plans, and code changes; bind evidence to the exact artifact and route manual acceptance to j-stakeholder-validation-and-acceptance.
 ---
 
 # Automated Testing and Verification
 
 ## Purpose
 
-Provide objective automated evidence that an exact implementation artifact satisfies approved behavior and applicable quality expectations.
-
-Always consider integration, end-to-end, and regression testing. Create or run each category only when applicable, and record the reason when it is not required, blocked, or already covered.
+Create and evaluate automated technical evidence for an exact implementation artifact. Use approved behavior, arc42 architecture evidence, C4 boundaries, implementation plans, and change impact to select the minimum sufficient test scope.
 
 ## Governing Rules
 
-- Bind every result to an exact commit, package, image, build, or other immutable implementation artifact.
-- Inspect existing tests before adding new ones.
-- Reuse adequate developer tests and avoid redundant coverage.
-- Use risk-based selection rather than maximizing test count.
-- Keep manual stakeholder validation outside this skill.
-- Do not change expected behavior to make tests pass.
-- Report failures, gaps, and blocked verification honestly.
+- Identify the exact commit, build, package, image, or other artifact before claiming execution results.
+- Separate strategy mode, execution mode, and combined mode.
+- Consider integration, end-to-end, and regression testing for every scope and record `required`, `already-covered`, `not-required`, or `blocked`.
+- Derive test scope from relevant runtime views, deployment boundaries, cross-cutting concepts, quality scenarios, risks, decisions, and changed architecture relationships.
+- Do not duplicate developer tests already owned by implementation planning unless they form part of the required evidence set.
+- Do not rewrite acceptance criteria, architecture, or implementation plans.
+- Record failures, blocked evidence, and limitations honestly.
+- Manual stakeholder validation belongs to Skill J.
 
 ## Canonical Files
 
 Read:
 
-- approved user stories and traceability;
-- approved architecture and relevant decisions;
-- applicable technical-readiness reports;
-- repository issue registry;
-- relevant implementation plans;
-- implementation handoff or exact artifact identifier;
-- source code, existing tests, continuous-integration configuration, and available test results.
+- approved user stories and acceptance references;
+- `sdlc_docs/01_requirements/04_user_story_technical_readiness.md`;
+- `sdlc_docs/02_architecture/00_architecture_document.md`;
+- `sdlc_docs/02_architecture/01_architecture_traceability.md`;
+- relevant container, component, data-model, and decision documents;
+- relevant implementation plans and issue registry;
+- current code, tests, dependencies, continuous-integration configuration, and exact implementation artifact.
 
 Create or update:
 
-- `sdlc_docs/04_testing/00_testing_strategy.md`
-- `sdlc_docs/04_testing/01_test_traceability.md`
-- `sdlc_docs/04_testing/02_testing_results.md`
+- `sdlc_docs/04_testing/00_testing_strategy.md`;
+- `sdlc_docs/04_testing/01_test_traceability.md`;
+- `sdlc_docs/04_testing/02_testing_results.md`.
 
 ## Core Workflow
 
-### 1. Select the Operating Mode and Artifact
+### 1. Establish Mode, Artifact, and Scope
 
-Use **strategy mode**, **execution mode**, or **combined mode**. Execution requires an exact implementation artifact and test environment.
+Read `references/artifact-and-entry-gate.md`. Identify exact artifact, stories, issues, architecture version, implementation-plan version, environment, and affected architecture.
 
-Read `references/artifact-and-entry-gate.md`.
+### 2. Inspect Existing Evidence and Change Impact
 
-### 2. Inspect Existing Test Evidence
+Inspect existing tests, continuous-integration results, changed files, affected containers, components, interfaces, data, runtime flows, deployment boundaries, quality scenarios, risks, and decisions.
 
-Inspect developer tests, integration tests, end-to-end tests, regression suites, and continuous-integration results. Do not infer gaps only from documentation.
+### 3. Select Applicable Test Categories
 
-### 3. Assess Test Category Applicability
+Read `references/test-category-selection.md`. Record applicability and rationale for integration, end-to-end, regression, and other risk-based categories.
 
-For each relevant category, record `required`, `already-covered`, `not-required`, or `blocked`, with a reason.
+### 4. Design or Update Automated Tests
 
-Always evaluate:
+Create or update tests only in execution or combined mode. Reuse project conventions. Map each test to story, architecture concern, boundary, risk, quality scenario, and implementation artifact.
 
-- integration tests;
-- end-to-end tests;
-- regression tests.
+### 5. Execute and Collect Evidence
 
-Evaluate performance, security, reliability, compatibility, migration, recovery, accessibility, and other quality tests when requirements or risk justify them.
+Run the selected automated checks when tools and environment are available. Record commands, environment, timestamps, results, evidence references, failures, and limitations.
 
-Read `references/test-category-selection.md`.
+### 6. Assess Results and Route Findings
 
-### 4. Define the Minimum Additional Automated Test Set
+Read `references/evidence-and-status.md`. Separate test result, evidence type, defect classification, and release implication. Route implementation defects to implementation, plan defects to Skill H, architecture defects to Skill E, and manual acceptance to Skill J.
 
-Map approved behavior and risks to existing evidence and missing automated tests. Prefer the lowest effective test level while retaining enough end-to-end coverage for critical workflows.
+### 7. Persist Testing State
 
-### 5. Create or Update Automated Tests
-
-When requested and tools allow, implement the selected automated tests according to repository conventions. Do not create manual validation procedures.
-
-### 6. Execute the Selected Tests
-
-Run relevant tests in the identified environment. Capture commands, environment, counts, failures, blocked tests, and evidence references.
-
-### 7. Persist Traceability and Results
-
-Separate verification status from evidence type. Use `templates/testing-strategy.md`, `templates/test-traceability.md`, and `templates/testing-results.md`.
-
-### 8. Determine the Testing Assessment
-
-Use one assessment:
-
-- `testing-passed`;
-- `testing-passed-with-known-limitations`;
-- `testing-failed`;
-- `testing-incomplete`;
-- `testing-blocked`.
-
-This assessment is technical evidence, not stakeholder acceptance.
+Read `references/persistence.md`. Preserve history and bind one current result set to the exact artifact and environment.
 
 ## Boundary with Other Skills
 
-- Skill H guides developer tests during implementation.
-- Skill I owns broader automated integration, end-to-end, regression, and risk-based verification.
+- Skill H owns developer-focused implementation tests and coding sequence.
+- Skill E owns architecture and quality strategy.
+- Skill I owns broader automated technical verification.
 - Skill J owns manual validation and stakeholder acceptance.
-- Implementation defects return to implementation, followed by retesting.
-- Requirement, story, or architecture defects return to their owning skills.
+- Do not make the stakeholder acceptance decision.
 
 ## Resources
 

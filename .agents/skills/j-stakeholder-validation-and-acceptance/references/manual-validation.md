@@ -1,18 +1,14 @@
 # Manual Validation
 
-For each approved acceptance criterion, record:
+For each selected acceptance criterion, record:
 
-- user story and criterion reference;
-- purpose;
-- prerequisites;
+- story and criterion reference;
+- objective;
 - environment and test data;
+- user role;
 - evaluator actions;
-- expected behavior from the approved criterion;
-- actual result;
-- evidence;
-- evaluator comments;
-- related issue or defect.
+- expected behavior without rewriting it;
+- evidence required;
+- relevant applications, data stores, external systems, runtime conditions, or quality expectations for setup and troubleshooting.
 
-Manual validation is appropriate for usability, visual behavior, language clarity, domain-expert judgment, accessibility experience, operational workflows, accepted limitations, and scenarios impractical to automate.
-
-Do not reproduce automated test implementation details. Automated evidence may support entry conditions but does not replace the stakeholder decision.
+Focus on user-visible behavior, usability, domain correctness, accessibility experience, operational workflow, and stakeholder judgment. Do not turn internal architecture checks into acceptance scenarios.

@@ -56,9 +56,11 @@ Inspect `sdlc_docs/01_requirements/04_user_story_technical_readiness.md`. Determ
 
 Inspect `sdlc_docs/03_implementation/00_repository_issue_registry.md` and, when available, the repository issue system. Completion requires verified issue mappings for the selected approved scope. Registry-only or issue-only state may require reconciliation.
 
+Direct repository issues without lineage markers are not implementation-ready evidence. If many exist, mark repository issues as `in-progress` or `inconsistent` for the selected scope and route to Skill G intake reconciliation. Reconciliation batch reports under `sdlc_docs/03_implementation/intake_reconciliation/` are evidence of triage, not proof that promoted candidates completed requirements or planning.
+
 ### H — Implementation Planning
 
-Inspect plans under `sdlc_docs/03_implementation/plans/`. Completion requires a current plan tied to selected issue identifiers, approved source versions, technical review, and codebase baseline. A plan may be complete while implementation itself remains unexecuted.
+Inspect the living roadmap, planning batches, and plans under `sdlc_docs/03_implementation/`. Completion requires a current plan tied to selected canonical issue identifiers, approved source versions, technical review, and codebase baseline. A plan may be complete while implementation itself remains unexecuted. Raw intake, duplicate, similar-existing-scope, or needs-human-review issues do not count as planned.
 
 ### Implementation Execution — External Stage
 

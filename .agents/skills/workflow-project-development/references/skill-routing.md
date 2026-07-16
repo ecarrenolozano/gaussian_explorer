@@ -10,7 +10,7 @@
 | Product readiness | `d-user-story-product-readiness` | Independently review and approve the exact user-story version |
 | Architecture and design | `e-architecture-and-design` | Create and approve architecture for the exact product-approved story version |
 | Technical readiness | `f-user-story-technical-readiness` | Review whether selected stories are technically ready under the approved architecture |
-| Repository issues | `g-create-repository-issues` | Publish approved work as repository issues and reconcile issue-to-document relationships |
+| Repository issues | `g-create-repository-issues` | Publish approved work as repository issues, reconcile issue-to-document relationships, and cluster contributor-created issue intake |
 | Implementation planning | `h-implementation-planning` | Create code-level implementation plans for approved, linked work |
 | Automated testing | `i-automated-testing-and-verification` | Plan, create, select, execute, and report applicable automated verification |
 | Stakeholder validation | `j-stakeholder-validation-and-acceptance` | Perform manual validation and record authorized acceptance for an exact release candidate |
@@ -23,8 +23,9 @@
 - "Turn the clarified requirements into stories" → `c-create-user-stories`.
 - "Are these stories ready?" → distinguish product review (`d-user-story-product-readiness`) from technical review (`f-user-story-technical-readiness`).
 - "Design the system" or "continue architecture" → `e-architecture-and-design`.
-- "Create the GitHub issues" → `g-create-repository-issues` in publication mode.
-- "Someone created GitHub issues manually" → `g-create-repository-issues` in reconciliation mode.
+- "Create repository issues" → `g-create-repository-issues` in publication mode.
+- "Someone created tracker issues manually" → `g-create-repository-issues` in reconciliation mode.
+- "There are many direct tracker issues, duplicates, or similar requests" → `g-create-repository-issues` in intake reconciliation mode before requirements or implementation planning.
 - "Plan the implementation" → `h-implementation-planning`.
 - "Add integration, end-to-end, or regression tests" → `i-automated-testing-and-verification`.
 - "Validate this release with the scientist/product owner" → `j-stakeholder-validation-and-acceptance`.

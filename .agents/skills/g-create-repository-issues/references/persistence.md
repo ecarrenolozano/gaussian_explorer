@@ -1,17 +1,7 @@
 # Persistence
 
-Use sequential publication batch names such as `publication-001`.
+Update the registry only after issue identity is verified. Preserve previous mappings and reconciliation history.
 
-Publication is complete only when:
+When issue creation succeeds but registry persistence fails, record partial completion with the verified issue number and repair the registry later. Do not create a replacement issue.
 
-1. the issue exists;
-2. its identifier and URL are verified;
-3. the issue contains correct lineage;
-4. every approved issue relationship is verified or recorded with an explicit fallback reason;
-5. the local registry contains the issue mapping and relationship state.
-
-Never delete registry history. Update current state and append publication or reconciliation history.
-
-When only part of a batch succeeds, record each successful issue and each failed item. Do not republish successful items during repair.
-
-Relationship publication is complete only when the platform confirms the relationship, or the registry records that the relationship was intentionally skipped because the platform could not represent it or the approved graph would violate platform constraints.
+Store the exact documentation revision when available so issue scope can be compared with the source state used for publication.

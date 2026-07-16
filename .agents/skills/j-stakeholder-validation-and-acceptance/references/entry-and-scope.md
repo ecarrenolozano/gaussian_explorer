@@ -1,14 +1,14 @@
 # Entry and Scope
 
-Require:
+Confirm:
 
+- exact release candidate;
 - current story version and selected story IDs;
-- exact release candidate, build, package, image, or equivalent artifact;
-- applicable automated testing results for that artifact;
-- validation environment and test data;
-- evaluator;
-- authorized stakeholder decision-maker.
+- automated testing assessment for the same artifact;
+- validation mode;
+- environment and required dependencies;
+- evaluator and authorized decision-maker;
+- known defects and limitations;
+- relevant arc42 context, runtime, deployment, quality, or risk information when it affects validation setup or user-visible outcomes.
 
-Do not begin formal validation when critical automated tests fail, the artifact is unavailable, or acceptance criteria are too ambiguous to evaluate.
-
-A new release candidate makes prior acceptance historical unless the change is formally proven to be outside the accepted scope.
+Use architecture traceability only when it helps identify affected applications, data stores, external systems, roles, environment conditions, or setup needs. Stop when the artifact or approval state is ambiguous.

@@ -1,51 +1,43 @@
 # Deployment Plan
 
-<!-- deployment-plan | version: <version> | release-candidate: <exact-artifact> | environment: <name> | assessment: <assessment> | decision: <decision> -->
+<!-- deployment-plan | version: 1.0 | release-candidate: <artifact> | architecture-version: 1.0 | environment: <environment> | status: draft -->
 
-## Current State
+## Scope and Lineage
 
-- Deployment-plan version:
 - Release candidate:
 - Target environment:
-- Included stories:
-- Automated-testing evidence:
-- Stakeholder-acceptance evidence:
-- Architecture version:
-- Readiness assessment:
-- Approval decision:
+- Testing evidence:
+- Stakeholder acceptance:
+- Architecture document: `sdlc_docs/02_architecture/00_architecture_document.md`
+- Relevant arc42 sections:
+- Related architecture decisions:
 
-## Release Scope
+## Deployment Architecture and Actual Artifacts
 
-### Included
+| Architecture container or resource | Actual artifact, service, job, schema, or managed resource | Version | Owner | Deployment order |
+|---|---|---|---|---|
 
-### Excluded
+## Prerequisites and Access
 
-### Known Limitations
+## Configuration and Secret References
 
-## Prerequisites and Ownership
-
-## Configuration, Access, and Secret References
-
-## Migrations
+## Data and Infrastructure Migrations
 
 ## Deployment Procedure
 
-| Step | Responsible role | Prerequisite | Action | Expected result | Verification | Failure or pause condition |
-|---|---|---|---|---|---|---|
+## Health Checks and Post-Deployment Verification
 
-## Post-Deployment Verification
+## Monitoring, Observation, and Communication
 
-## Monitoring and Communication
+## Rollback or Forward Recovery
 
-## Rollback or Recovery
+## Risks and Accepted Limitations
 
-See `02_rollback_plan.md` when a separate plan is required.
+## Decision Authorities
 
-## Risks and Dependencies
+## Readiness and Approval
 
-## Open Blockers
-
-## Revision History
-
-| Version | Date | Author | Change | Release candidate | Environment | Notes |
-|---|---|---|---|---|---|---|
+- Assessment:
+- Approver:
+- Date:
+- Accepted risks:

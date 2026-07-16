@@ -60,7 +60,7 @@ Classify the request as one of:
 - **run-stage:** delegate a named workflow stage;
 - **explain:** explain the current stage, blocker, approval, or expected artifact;
 - **repair:** identify inconsistent or stale workflow state and route correction to the owning skill;
-- **reconcile-issues:** delegate repository-issue publication or reconciliation to Skill G.
+- **reconcile-issues:** delegate repository-issue publication, reconciliation, or contributor-created issue intake clustering to Skill G.
 
 ## Core Workflow
 
@@ -112,6 +112,8 @@ For `resume` or `continue`, select the earliest stage that is:
 4. not blocked by an unresolved human decision.
 
 Do not assume that every project must execute every stage immediately. Respect user-selected scope while enforcing prerequisites.
+
+When direct repository issues exist without approved SDLC lineage, especially in bulk, select `reconcile-issues` before requirements clarification or implementation planning. Treat those issues as intake signals until Skill G classifies and routes them.
 
 ### 6. Prepare the Delegation Context
 

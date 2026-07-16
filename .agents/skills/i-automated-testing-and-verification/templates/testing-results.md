@@ -1,23 +1,24 @@
 # Automated Testing Results
 
-## Run Identification
+<!-- testing-results | artifact: <artifact> | environment: <environment> | assessment: testing-incomplete -->
 
-- Implementation artifact:
-- Environment:
-- Execution date:
-- Commands or continuous-integration run:
-- Assessment:
+## Artifact and Scope
 
-## Summary
+## Execution Summary
 
-## Results by Test Category
+| Category | Tests run | Passed | Failed | Blocked | Evidence |
+|---|---:|---:|---:|---:|---|
 
-## Failures
+## Runtime, Deployment, and Architecture Boundary Results
 
-## Blocked Verification
+## Quality Scenario and Risk Results
+
+## Failures and Defects
 
 ## Known Limitations
 
-## Evidence References
+## Assessment
 
-## Required Routes and Retesting
+- Assessment:
+- Date:
+- Executed by:

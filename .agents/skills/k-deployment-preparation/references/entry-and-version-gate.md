@@ -1,22 +1,16 @@
 # Entry and Version Gate
 
-Proceed only when all required state is identifiable and consistent:
+Confirm:
 
-- exact release candidate or immutable artifact;
-- included user-story identifiers and current story version;
-- current automated-testing result for the same artifact;
-- current stakeholder-acceptance result permitting deployment preparation;
-- named target environment;
-- deployment owner, rollback decision owner, and approval authority.
+- exact release candidate;
+- story scope and stakeholder acceptance for that artifact;
+- current automated testing assessment;
+- current architecture version;
+- target environment;
+- approved arc42 deployment view or explicit reason it is not applicable;
+- relevant runtime behavior, cross-cutting concepts, quality scenarios, risks, and architecture decisions;
+- affected containers, data stores, and external dependencies;
+- actual deployment artifact or resource mapping;
+- deployment and rollback decision-makers.
 
-Treat selected-story acceptance as insufficient for a full release unless the selected stories exactly equal the declared release scope.
-
-Stop and report `blocked` when:
-
-- the testing or acceptance evidence refers to another artifact;
-- the release candidate has changed since testing or acceptance;
-- acceptance is rejected, incomplete, or outside the required scope;
-- the target environment is unknown;
-- required ownership or authorization is missing.
-
-A new release candidate requires new testing and stakeholder validation unless a documented impact assessment explicitly establishes that existing evidence remains applicable.
+Stop when the artifact, environment, architecture, or acceptance cannot be identified uniquely.

@@ -1,32 +1,30 @@
 # Automated Testing Strategy
 
-## Current State
+<!-- testing-strategy | artifact: <artifact> | story-version: 1.0 | architecture-version: 1.0 -->
 
-- Mode:
-- Story version:
-- Architecture version:
-- Technical review:
-- Repository issues:
-- Implementation plan version:
-- Implementation artifact:
-- Environment:
+## Scope and Artifact
 
-## Scope and Risks
+## Architecture and Risk Basis
 
-## Existing Test Baseline
+| arc42 concern | Software system | Container | Component or data model | Runtime, deployment, or interface boundary | Quality scenario or risk | Change impact |
+|---|---|---|---|---|---|---|
 
-## Test Category Applicability
+## Existing Evidence
 
-| Category | Applicability | Reason | Existing Evidence | Additional Work |
+## Category Applicability
+
+| Category | Applicability | Reason | Existing evidence | Additional work |
 |---|---|---|---|---|
-| Integration |  |  |  |  |
-| End-to-end |  |  |  |  |
-| Regression |  |  |  |  |
+| Integration | | | | |
+| End-to-end | | | | |
+| Regression | | | | |
+| Performance or scalability | | | | |
+| Security or privacy | | | | |
+| Reliability or recovery | | | | |
+| Migration or compatibility | | | | |
 
-## Additional Automated Tests
+## Environments and Test Data
 
-## Test Data, Fixtures, and Environments
+## Selected Automated Tests
 
-## Entry and Completion Criteria
-
-## Blocked or Untestable Areas
+## Blockers and Limitations

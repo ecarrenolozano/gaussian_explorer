@@ -1,3 +1,4 @@
 interface:
   display_name: "Create Repository Issues"
-  short_description: "Publish and reconcile traceable repository issues."
+  short_description: "Publish, verify, and reconcile SDLC-linked repository issues."
+  default_prompt: "Use $g-create-repository-issues to publish approved repository tracker issues or reconcile direct tracker intake against SDLC documentation."

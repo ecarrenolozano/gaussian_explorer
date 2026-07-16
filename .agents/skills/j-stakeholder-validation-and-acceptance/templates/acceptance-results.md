@@ -1,30 +1,23 @@
-# Stakeholder Validation and Acceptance Results
+# Stakeholder Acceptance Results
 
-## Run Identification
+<!-- acceptance-results | release-candidate: <artifact> | recommendation: validation-incomplete -->
 
-- Validation mode:
+## Validation Run
+
 - Story version:
-- In-scope stories:
-- Release candidate:
-- Testing evidence:
+- Stories:
 - Environment:
 - Evaluator:
 - Authorized approver:
 - Date:
 
-## Results by Story and Criterion
+## Results
 
-| Story | Criterion | Behavior Result | Stakeholder Disposition | Evidence | Related Issue | Comments |
-|---|---|---|---|---|---|---|
+| Story and criterion | Behavior result | Stakeholder disposition | Evidence | Defect or waiver |
+|---|---|---|---|---|
 
-## Defects and Routes
+## Accepted Limitations and Waivers
 
-## New Requirements and Clarifications
-
-## Approved Limitations and Waivers
-
-## Blockers
-
-## Stakeholder Decision
+## Routed Findings
 
 ## Release Recommendation

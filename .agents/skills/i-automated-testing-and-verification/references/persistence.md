@@ -1,7 +1,7 @@
 # Persistence
 
-Keep strategy, traceability, and results separate so frequently changing execution evidence does not rewrite approved scope.
+Preserve historical strategies and results. Mark one current result set for the exact artifact.
 
-Testing results must identify the exact artifact. Append or version historical runs rather than overwriting evidence for another artifact.
+Update strategy, traceability, and results consistently. If one file fails to update, report partial completion and do not claim a complete testing assessment.
 
-Summarize large logs and link to them. Do not embed complete logs unless necessary for diagnosis.
+Summarize logs and link to detailed evidence rather than embedding large raw outputs.

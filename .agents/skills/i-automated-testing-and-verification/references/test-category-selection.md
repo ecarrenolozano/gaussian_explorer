@@ -1,24 +1,36 @@
 # Test Category Selection
 
-## Integration testing
+Record `required`, `already-covered`, `not-required`, or `blocked` for every applicable category.
 
-Use when changes affect boundaries such as databases, files, services, application programming interfaces, queues, storage, authentication, migrations, or external systems.
+## Integration Tests
 
-## End-to-end testing
+Use integration tests for collaboration:
 
-Use a small number of tests for critical user workflows, high-risk failure paths, authorization boundaries, important persistence behavior, and release-critical processes.
+- between components inside one container when the boundary has meaningful behavior;
+- between application containers;
+- between an application and a database, cache, broker, file store, or external system;
+- across interface contracts, messaging, authentication, migrations, retries, failure recovery, or recurring cross-cutting behavior.
 
-## Regression testing
+Use arc42 building blocks, runtime views, concepts, and decisions to identify these boundaries.
 
-Select tests based on change impact. Include:
+## End-to-End Tests
 
-- affected existing tests;
-- tests for new behavior;
-- a regression case for corrected defects when practical;
-- critical unaffected workflows whose failure risk increased.
+Use end-to-end tests for a small set of critical actor journeys and operational scenarios that cross real system boundaries. Select them from approved behavior, runtime views, deployment context, and material risks. Do not duplicate every criterion at the most expensive level.
 
-Regression is a purpose, not a separate test level; its suite may contain unit, integration, and end-to-end tests.
+## Regression Tests
 
-## Other categories
+Select regression tests from:
 
-Select performance, security, reliability, compatibility, migration, recovery, accessibility, or contract tests only when approved requirements, architecture, operational risk, or known defects justify them.
+- existing behavior in affected containers and components;
+- relationships, runtime flows, concepts, or decisions changed by the implementation;
+- critical neighboring flows with increased risk;
+- every corrected defect when practical;
+- existing suites required by project policy.
+
+Regression is a purpose and may include unit, integration, and end-to-end tests.
+
+## Quality and Risk-Based Tests
+
+Assess performance, scalability, security, privacy, reliability, resilience, compatibility, migration, recovery, configuration, observability, accessibility automation, and other categories when arc42 quality scenarios, cross-cutting concepts, deployment view, risks, decisions, or requirements justify them.
+
+Do not invent thresholds. Use approved measures or report the missing decision.

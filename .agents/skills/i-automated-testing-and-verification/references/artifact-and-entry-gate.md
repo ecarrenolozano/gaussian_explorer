@@ -1,15 +1,13 @@
 # Artifact and Entry Gate
 
-Record:
+Identify:
 
-- story version and in-scope story IDs;
-- architecture version;
-- technical review identifier;
-- repository issue identifiers;
-- implementation-plan version when applicable;
-- exact commit, package, image, build, or equivalent artifact;
-- test environment and execution date.
+- exact implementation artifact;
+- repository revision and implementation-plan version when applicable;
+- included issue and story IDs;
+- story, architecture, and technical-review versions;
+- relevant arc42 concerns, quality scenarios, risks, and decisions;
+- affected software systems, containers, components, data models, runtime flows, deployment boundaries, and external systems;
+- test environment and available dependencies.
 
-Strategy mode may proceed before implementation completion but must not claim execution evidence.
-
-Execution mode stops when the artifact or environment cannot be identified reliably. A new artifact makes previous results historical evidence.
+Execution mode stops when the artifact or environment cannot be identified uniquely. A new artifact requires a new result set.

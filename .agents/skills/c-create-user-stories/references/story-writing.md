@@ -39,13 +39,17 @@ Do not infer a benefit merely to complete the format. Defer the outcome when act
 
 ## Story Form
 
-Use:
+In the story `Description` section, use:
 
-> As a `<role>`,  
-> I need `<capability>`,  
-> so that `<value>`.
+```markdown
+**As a** <role>
+**I need** <capability>
+**So that** <value>
+```
 
 Write a concise title that states the user outcome. Use the requester’s terminology unless it is ambiguous or inconsistent with approved project terminology.
+
+Use `Assumptions & Details` only for supported assumptions or details that help downstream readers understand the story. Omit unsupported, empty, or placeholder bullets.
 
 ## Splitting Rules
 

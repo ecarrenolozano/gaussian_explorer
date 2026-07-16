@@ -75,7 +75,7 @@ Read and follow:
 1. `references/story-writing.md`
 2. `templates/agile-user-story-template.md`
 
-Create separate stories for independently valuable user outcomes. For `Partially ready` batches, generate only outcomes whose core actor, behavior, value, and scope are supported; preserve material uncertainty and defer blocked outcomes.
+Create separate stories for independently valuable user outcomes using the template's `Description`, `Assumptions & Details`, `Source and constraints`, and scenario structure. For `Partially ready` batches, generate only outcomes whose core actor, behavior, value, and scope are supported; preserve material uncertainty and defer blocked outcomes.
 
 ### 5. Write Acceptance Criteria and Validate Quality
 

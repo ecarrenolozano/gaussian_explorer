@@ -1,46 +1,37 @@
-# Release Checklist and Deployment Decision
+# Release Checklist
 
-## Release Identification
+## Artifact and Approval
 
-- Deployment-plan version:
-- Release candidate:
-- Target environment:
-- Reviewer:
-- Decision date:
+- [ ] Exact release candidate identified
+- [ ] Automated testing evidence is current
+- [ ] Stakeholder acceptance is current
+- [ ] Architecture version is current
+- [ ] Target environment is named
 
-## Applicable Checks
+## Architecture and Deployment Scope
 
-- [ ] Release scope is confirmed.
-- [ ] Exact artifact is identified.
-- [ ] Automated-testing evidence applies to the artifact.
-- [ ] Stakeholder acceptance applies to the artifact and release scope.
-- [ ] Target environment and deployment window are confirmed.
-- [ ] Required access is available.
-- [ ] Configuration and secret references are reviewed.
-- [ ] Backups and migrations are addressed when applicable.
-- [ ] Deployment procedure is ordered and reviewed.
-- [ ] Health checks and monitoring are defined.
-- [ ] Rollback or recovery is realistic.
-- [ ] Owners and communication are defined.
-- [ ] Material risks are resolved or explicitly accepted.
+- [ ] arc42 deployment view reviewed or not-applicable reason recorded
+- [ ] Relevant runtime, concepts, quality scenarios, risks, and decisions reviewed
+- [ ] Architecture containers mapped to actual deployable artifacts or resources
+- [ ] Data stores, brokers, caches, workers, and external integrations identified
 
-## Readiness Assessment
+## Preparation
 
-- [ ] `ready-for-deployment`
-- [ ] `ready-with-accepted-risks`
-- [ ] `not-ready`
-- [ ] `blocked`
+- [ ] Access and permissions verified
+- [ ] Configuration sources verified
+- [ ] Secret references verified without exposing values
+- [ ] Migrations and compatibility reviewed
+- [ ] Backups and prerequisites verified
+- [ ] Deployment order and pause conditions approved
 
-## Accepted Risks
+## Verification and Recovery
 
-| Risk | Impact | Mitigation | Owner | Approver | Acceptance date | Review condition |
-|---|---|---|---|---|---|---|
+- [ ] Health checks defined
+- [ ] Monitoring and observation window defined
+- [ ] Rollback or forward-recovery plan verified
+- [ ] Communication and escalation paths defined
 
-## Human Decision
+## Approval
 
-- [ ] Approved for execution in the named environment
-- [ ] Changes requested
-- [ ] Rejected
-- [ ] Pending
-
-## Comments
+- [ ] Plan version approved for the exact artifact and environment
+- [ ] Accepted risks have owners and authorized approvers

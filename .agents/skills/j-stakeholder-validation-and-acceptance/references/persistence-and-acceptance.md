@@ -1,9 +1,7 @@
 # Persistence and Acceptance
 
-Bind every validation run to the exact story version, selected story IDs, release candidate, testing evidence, environment, evaluator, and validation date.
+Bind each validation run to one release candidate, story version, story set, testing result set, environment, and date.
 
-Selected-story validation can accept only its selected stories. Release-candidate acceptance requires complete release scope.
+A waiver must record the exact deviation, impact, owner, approver, and any review condition. It must not rewrite the approved criterion.
 
-Preserve stakeholder comments accurately. Do not overwrite prior validation runs for older artifacts.
-
-The release recommendation must follow recorded behavior results, dispositions, defects, blockers, and waivers.
+A new release candidate requires new validation or an explicitly justified scoped carry-forward decision.

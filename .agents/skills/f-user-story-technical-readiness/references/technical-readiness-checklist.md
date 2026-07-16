@@ -1,68 +1,54 @@
-# Technical-Readiness Checklist
+# Technical Readiness Checklist
 
-Load during Step 4. Apply only criteria relevant to the reviewed story. Record `satisfied`, `partial`, `missing`, `conflicting`, `unknown`, or `not applicable` with supporting evidence.
+Apply only relevant checks.
 
-## 1. Lineage and Architecture Path
+## arc42 Evidence
 
-- Story ID, source lineage, lifecycle, versions, and approvals are valid.
-- The story maps to existing architecture responsibilities, containers, components, interfaces, data, and ADRs.
-- No unresolved architecture decision prevents a coherent implementation path.
-- Accepted ADRs and project constraints do not conflict with the story.
+- The story is covered by the relevant goals, constraints, context, solution strategy, building blocks, runtime behavior, deployment, cross-cutting concepts, quality scenarios, risks, and decisions.
+- Unrelated arc42 sections may be brief or explicitly not applicable.
+- Open architecture questions that affect implementation are visible and routed.
 
-## 2. Interfaces and Integrations
+## C4 and Ownership Path
 
-- Required providers, consumers, owners, and interaction purpose are known.
-- Request, response, event, file, command, device, or user-interface contracts are sufficiently defined for implementation.
-- Compatibility, versioning, ordering, idempotency, timeout, retry, cancellation, and partial-failure behavior are addressed when material.
-- External systems, teams, vendors, credentials, sandboxes, and availability dependencies are visible.
+- The story maps to the correct software system.
+- The owning container is explicit.
+- Affected components or data models are explicit when needed.
+- Referenced container, component, and data documents exist.
+- The architecture responsibility matches the story outcome.
+- The implementation mapping is `confirmed`, `proposed`, `planned`, or explicitly `not-mapped`.
+- A proposed or not-mapped location does not hide a blocking design decision.
 
-## 3. Data and State
+## Interfaces and Data
 
-- Authoritative sources and data ownership are known.
-- Required fields, validation, units, precision, schema evolution, lifecycle, retention, deletion, and migration effects are understood where relevant.
-- Concurrency, consistency, duplication, correction, replay, recovery, and audit behavior are bounded when material.
-- Test data, privacy constraints, and environment-specific data needs are known.
+- Providers, consumers, protocols, data formats, validation, errors, and compatibility expectations are sufficiently defined.
+- Data ownership, lifecycle, consistency, migration, retention, access, and recovery concerns are sufficiently defined.
 
-## 4. Security, Privacy, and Safety
+## Runtime and Internal Design
 
-- Authentication, authorization, trust boundaries, and sensitive data paths are understood.
-- Secret handling, logging, audit, minimization, retention, misuse, and abuse concerns are addressed where applicable.
-- Required safe states, protective behavior, specialist evidence, or human validation are identified for high-consequence work.
-- Technical controls support rather than reinterpret approved product behavior.
+- Important success, failure, asynchronous, retry, and recovery flows are sufficiently defined.
+- Significant component responsibilities are cohesive and non-overlapping.
+- Selective code-level design exists when state, lifecycle, concurrency, domain relationships, collaboration, or risk makes it necessary.
+- Missing design is routed to Skill E instead of invented here.
 
-## 5. Quality Attributes
+## Quality and Cross-Cutting Concepts
 
-- Relevant latency, throughput, volume, availability, consistency, accuracy, compatibility, accessibility, resource, or recovery expectations are measurable or explicitly deferred.
-- Architecture choices plausibly support those expectations.
-- Failure handling, fallback, observability, diagnostics, and recovery evidence are defined where needed.
-- No unsupported threshold is introduced to make the story appear ready.
+- Relevant quality scenarios have measurable or reviewable outcomes.
+- Security, privacy, configuration, secrets, logging, monitoring, error handling, performance, scalability, and testing concepts are sufficient for planning when applicable.
+- Architecture decisions and risks that constrain the story are explicit.
 
-## 6. Delivery and Operations
+## Deployment and Operations
 
-- Configuration, feature flags, rollout, rollback, migration, coexistence, and release dependencies are understood when relevant.
-- Required monitoring, alerts, dashboards, runbooks, support, and documentation impacts are identified.
-- Environment, infrastructure, hardware, certificate, policy, procurement, or external-team prerequisites are visible.
-- Ownership exists for enabling or cross-cutting work.
+- Runtime and deployment paths are clear where they affect implementation.
+- Environment, configuration, secret ownership, observability, scaling, recovery, and external dependencies are understood enough to plan work.
 
-## 7. Verification
+## Verification
 
-- Acceptance criteria can be implemented as meaningful tests without inventing product behavior.
-- Required unit, contract, integration, end-to-end, performance, security, accessibility, hardware, numerical, migration, or recovery evidence is identified where applicable.
-- Required environments, fixtures, simulators, datasets, tools, and specialist review are available or explicitly blocked.
-- Completion evidence is distinguishable from implementation activity.
+- Acceptance behavior can be verified.
+- Required developer, integration, end-to-end, regression, performance, security, migration, or recovery evidence can be planned.
+- Environments, test data, or external systems are available or explicitly blocked.
 
-## 8. Size, Dependencies, and Sequencing
+## Technical Uncertainty
 
-- The story is small enough for the team's normal delivery unit or has a documented exception.
-- Dependencies and sequencing are explicit.
-- Any proposed split represents independently valuable or independently verifiable work, not frontend/API/database layers.
-- Genuine research uncertainty is separated from implementation and can be answered by a bounded spike.
-
-## Severity
-
-- **blocking:** prevents safe implementation, reliable verification, or valid routing.
-- **major:** likely to cause incorrect behavior or substantial rework.
-- **moderate:** materially improves delivery confidence but does not block.
-- **minor:** low-risk clarity or maintainability improvement.
-
-A numeric or checklist majority never overrides a blocking finding.
+- Unknowns are classified as ordinary implementation detail, architecture work, product clarification, or bounded spike.
+- External dependencies have owners and expected evidence.
+- No unresolved question is hidden behind optimistic assumptions.

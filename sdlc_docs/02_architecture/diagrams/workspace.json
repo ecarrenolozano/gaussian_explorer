@@ -1,0 +1,624 @@
+{
+  "configuration" : { },
+  "description" : "Canonical C4 model for architecture version 1.0 and source story version 1.0.",
+  "documentation" : { },
+  "id" : 1,
+  "lastModifiedDate" : "2026-07-16T10:43:38Z",
+  "model" : {
+    "deploymentNodes" : [ {
+      "children" : [ {
+        "containerInstances" : [ {
+          "containerId" : "4",
+          "environment" : "LocalDeployment",
+          "id" : "33",
+          "instanceId" : 1,
+          "properties" : {
+            "structurizr.dsl.identifier" : "97734466-f56f-4325-ac5f-e541b50dbe66"
+          },
+          "relationships" : [ {
+            "description" : "Stores accepted dataset",
+            "destinationId" : "34",
+            "id" : "35",
+            "linkedRelationshipId" : "22",
+            "sourceId" : "33"
+          } ],
+          "tags" : "Container Instance"
+        }, {
+          "containerId" : "11",
+          "environment" : "LocalDeployment",
+          "id" : "34",
+          "instanceId" : 1,
+          "properties" : {
+            "structurizr.dsl.identifier" : "ac81a1b9-ed1a-4ea8-8b14-6dab1e7c1db4"
+          },
+          "tags" : "Container Instance"
+        } ],
+        "description" : "Streamlit server process",
+        "environment" : "LocalDeployment",
+        "id" : "32",
+        "instances" : "1",
+        "name" : "Streamlit Process",
+        "properties" : {
+          "structurizr.dsl.identifier" : "9e0af965-48f7-4103-9a2e-9dc959a9e932"
+        },
+        "tags" : "Element,Deployment Node",
+        "technology" : "Streamlit"
+      } ],
+      "description" : "Local workstation, lab server, or simple app host",
+      "environment" : "LocalDeployment",
+      "id" : "31",
+      "instances" : "1",
+      "name" : "User-accessible Python Runtime",
+      "properties" : {
+        "structurizr.dsl.identifier" : "3b8eece0-bc0b-4f1b-941b-efd9c0b18a5f"
+      },
+      "tags" : "Element,Deployment Node",
+      "technology" : "Python 3.12+"
+    } ],
+    "people" : [ {
+      "description" : "Uploads small experimental datasets, configures Gaussian Process Regression, interprets uncertainty, and exports results.",
+      "id" : "1",
+      "name" : "Researcher",
+      "properties" : {
+        "structurizr.dsl.identifier" : "researcher"
+      },
+      "relationships" : [ {
+        "description" : "Uses to run an analysis",
+        "destinationId" : "4",
+        "id" : "12",
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Uses to run an analysis",
+        "destinationId" : "3",
+        "id" : "13",
+        "linkedRelationshipId" : "12",
+        "sourceId" : "1"
+      }, {
+        "description" : "Interacts with the analysis workflow",
+        "destinationId" : "5",
+        "id" : "14",
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Selects CSV files from and saves downloaded artifacts to",
+        "destinationId" : "2",
+        "id" : "15",
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "description" : "Source of uploaded CSV files and destination for downloaded result, plot, and metadata artifacts.",
+      "documentation" : { },
+      "id" : "2",
+      "name" : "Researcher's Local File System",
+      "properties" : {
+        "structurizr.dsl.identifier" : "localFileSystem"
+      },
+      "relationships" : [ {
+        "description" : "Provides uploaded CSV content",
+        "destinationId" : "4",
+        "id" : "16",
+        "sourceId" : "2",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Provides uploaded CSV content",
+        "destinationId" : "3",
+        "id" : "17",
+        "linkedRelationshipId" : "16",
+        "sourceId" : "2"
+      } ],
+      "tags" : "Element,Software System,External"
+    }, {
+      "containers" : [ {
+        "components" : [ {
+          "description" : "Presents upload, variable selection, settings, fit, visualization, and export controls.",
+          "documentation" : { },
+          "id" : "5",
+          "name" : "Workflow UI",
+          "properties" : {
+            "structurizr.dsl.identifier" : "workflowUi"
+          },
+          "relationships" : [ {
+            "description" : "Submits uploaded CSV content for validation",
+            "destinationId" : "6",
+            "id" : "20",
+            "sourceId" : "5",
+            "tags" : "Relationship"
+          }, {
+            "description" : "Submits variable choices and model settings",
+            "destinationId" : "7",
+            "id" : "23",
+            "sourceId" : "5",
+            "tags" : "Relationship"
+          }, {
+            "description" : "Requests model fitting for valid analysis inputs",
+            "destinationId" : "8",
+            "id" : "25",
+            "sourceId" : "5",
+            "tags" : "Relationship"
+          }, {
+            "description" : "Requests prediction and uncertainty chart",
+            "destinationId" : "9",
+            "id" : "27",
+            "sourceId" : "5",
+            "tags" : "Relationship"
+          }, {
+            "description" : "Requests result, plot, and metadata exports",
+            "destinationId" : "10",
+            "id" : "29",
+            "sourceId" : "5",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "description" : "Parses uploaded CSV data and rejects unsupported, malformed, oversized, or structurally unusable input.",
+          "documentation" : { },
+          "id" : "6",
+          "name" : "CSV parsing and validation",
+          "properties" : {
+            "structurizr.dsl.identifier" : "csvValidation"
+          },
+          "relationships" : [ {
+            "description" : "Stores accepted dataset",
+            "destinationId" : "11",
+            "id" : "21",
+            "sourceId" : "6",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "description" : "Derives numeric variables, records selected X/Y columns, and prepares editable GPR settings.",
+          "documentation" : { },
+          "id" : "7",
+          "name" : "Variable and GPR settings",
+          "properties" : {
+            "structurizr.dsl.identifier" : "settingsPreparation"
+          },
+          "relationships" : [ {
+            "description" : "Stores selected variables and settings",
+            "destinationId" : "11",
+            "id" : "24",
+            "sourceId" : "7",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "description" : "Fits Gaussian Process Regression and computes predicted mean and uncertainty bounds.",
+          "documentation" : { },
+          "id" : "8",
+          "name" : "GPR fitting and prediction",
+          "properties" : {
+            "structurizr.dsl.identifier" : "gprFitting"
+          },
+          "relationships" : [ {
+            "description" : "Reads analysis inputs and stores prediction results",
+            "destinationId" : "11",
+            "id" : "26",
+            "sourceId" : "8",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "description" : "Renders original data, predicted curve, and uncertainty estimates for interpretation.",
+          "documentation" : { },
+          "id" : "9",
+          "name" : "Prediction and uncertainty visualization",
+          "properties" : {
+            "structurizr.dsl.identifier" : "visualization"
+          },
+          "relationships" : [ {
+            "description" : "Reads dataset and prediction results",
+            "destinationId" : "11",
+            "id" : "28",
+            "sourceId" : "9",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "description" : "Builds result CSV, plot output, and reproducibility metadata from the active analysis state.",
+          "documentation" : { },
+          "id" : "10",
+          "name" : "Export generation",
+          "properties" : {
+            "structurizr.dsl.identifier" : "exportGeneration"
+          },
+          "relationships" : [ {
+            "description" : "Reads fitted analysis state and stores generated export payloads",
+            "destinationId" : "11",
+            "id" : "30",
+            "sourceId" : "10",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        } ],
+        "description" : "Provides the interactive workflow, validates inputs, fits the model, visualizes uncertainty, and creates exports.",
+        "documentation" : { },
+        "id" : "4",
+        "name" : "Streamlit Web Application",
+        "properties" : {
+          "structurizr.dsl.identifier" : "streamlitApp"
+        },
+        "relationships" : [ {
+          "description" : "Provides downloaded results, plot, and metadata",
+          "destinationId" : "2",
+          "id" : "18",
+          "sourceId" : "4",
+          "tags" : "Relationship"
+        }, {
+          "description" : "Stores accepted dataset",
+          "destinationId" : "11",
+          "id" : "22",
+          "linkedRelationshipId" : "21",
+          "sourceId" : "4"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Python 3.12, Streamlit"
+      }, {
+        "description" : "Ephemeral active-session state for uploaded data, selected variables, settings, prediction results, visualization metadata, and export payloads.",
+        "documentation" : { },
+        "id" : "11",
+        "name" : "In-memory Analysis Session",
+        "properties" : {
+          "structurizr.dsl.identifier" : "analysisSession"
+        },
+        "tags" : "Element,Container",
+        "technology" : "Streamlit session state, Python objects"
+      } ],
+      "description" : "Streamlit application for in-memory Gaussian Process Regression analysis of uploaded CSV data.",
+      "documentation" : { },
+      "id" : "3",
+      "name" : "Gaussian Process Regression Web Application",
+      "properties" : {
+        "structurizr.dsl.identifier" : "gaussianExplorer"
+      },
+      "relationships" : [ {
+        "description" : "Provides downloaded results, plot, and metadata",
+        "destinationId" : "2",
+        "id" : "19",
+        "linkedRelationshipId" : "18",
+        "sourceId" : "3"
+      } ],
+      "tags" : "Element,Software System"
+    } ]
+  },
+  "name" : "Gaussian Explorer Architecture",
+  "properties" : {
+    "structurizr.inspection.error" : "23",
+    "structurizr.dsl" : "d29ya3NwYWNlICJHYXVzc2lhbiBFeHBsb3JlciBBcmNoaXRlY3R1cmUiICJDYW5vbmljYWwgQzQgbW9kZWwgZm9yIGFyY2hpdGVjdHVyZSB2ZXJzaW9uIDEuMCBhbmQgc291cmNlIHN0b3J5IHZlcnNpb24gMS4wLiIgewogICAgbW9kZWwgewogICAgICAgIHJlc2VhcmNoZXIgPSBwZXJzb24gIlJlc2VhcmNoZXIiICJVcGxvYWRzIHNtYWxsIGV4cGVyaW1lbnRhbCBkYXRhc2V0cywgY29uZmlndXJlcyBHYXVzc2lhbiBQcm9jZXNzIFJlZ3Jlc3Npb24sIGludGVycHJldHMgdW5jZXJ0YWludHksIGFuZCBleHBvcnRzIHJlc3VsdHMuIgoKICAgICAgICBsb2NhbEZpbGVTeXN0ZW0gPSBzb2Z0d2FyZVN5c3RlbSAiUmVzZWFyY2hlcidzIExvY2FsIEZpbGUgU3lzdGVtIiAiU291cmNlIG9mIHVwbG9hZGVkIENTViBmaWxlcyBhbmQgZGVzdGluYXRpb24gZm9yIGRvd25sb2FkZWQgcmVzdWx0LCBwbG90LCBhbmQgbWV0YWRhdGEgYXJ0aWZhY3RzLiIgewogICAgICAgICAgICB0YWdzICJFeHRlcm5hbCIKICAgICAgICB9CgogICAgICAgIGdhdXNzaWFuRXhwbG9yZXIgPSBzb2Z0d2FyZVN5c3RlbSAiR2F1c3NpYW4gUHJvY2VzcyBSZWdyZXNzaW9uIFdlYiBBcHBsaWNhdGlvbiIgIlN0cmVhbWxpdCBhcHBsaWNhdGlvbiBmb3IgaW4tbWVtb3J5IEdhdXNzaWFuIFByb2Nlc3MgUmVncmVzc2lvbiBhbmFseXNpcyBvZiB1cGxvYWRlZCBDU1YgZGF0YS4iIHsKICAgICAgICAgICAgc3RyZWFtbGl0QXBwID0gY29udGFpbmVyICJTdHJlYW1saXQgV2ViIEFwcGxpY2F0aW9uIiAiUHJvdmlkZXMgdGhlIGludGVyYWN0aXZlIHdvcmtmbG93LCB2YWxpZGF0ZXMgaW5wdXRzLCBmaXRzIHRoZSBtb2RlbCwgdmlzdWFsaXplcyB1bmNlcnRhaW50eSwgYW5kIGNyZWF0ZXMgZXhwb3J0cy4iICJQeXRob24gMy4xMiwgU3RyZWFtbGl0IiB7CiAgICAgICAgICAgICAgICB3b3JrZmxvd1VpID0gY29tcG9uZW50ICJXb3JrZmxvdyBVSSIgIlByZXNlbnRzIHVwbG9hZCwgdmFyaWFibGUgc2VsZWN0aW9uLCBzZXR0aW5ncywgZml0LCB2aXN1YWxpemF0aW9uLCBhbmQgZXhwb3J0IGNvbnRyb2xzLiIKICAgICAgICAgICAgICAgIGNzdlZhbGlkYXRpb24gPSBjb21wb25lbnQgIkNTViBwYXJzaW5nIGFuZCB2YWxpZGF0aW9uIiAiUGFyc2VzIHVwbG9hZGVkIENTViBkYXRhIGFuZCByZWplY3RzIHVuc3VwcG9ydGVkLCBtYWxmb3JtZWQsIG92ZXJzaXplZCwgb3Igc3RydWN0dXJhbGx5IHVudXNhYmxlIGlucHV0LiIKICAgICAgICAgICAgICAgIHNldHRpbmdzUHJlcGFyYXRpb24gPSBjb21wb25lbnQgIlZhcmlhYmxlIGFuZCBHUFIgc2V0dGluZ3MiICJEZXJpdmVzIG51bWVyaWMgdmFyaWFibGVzLCByZWNvcmRzIHNlbGVjdGVkIFgvWSBjb2x1bW5zLCBhbmQgcHJlcGFyZXMgZWRpdGFibGUgR1BSIHNldHRpbmdzLiIKICAgICAgICAgICAgICAgIGdwckZpdHRpbmcgPSBjb21wb25lbnQgIkdQUiBmaXR0aW5nIGFuZCBwcmVkaWN0aW9uIiAiRml0cyBHYXVzc2lhbiBQcm9jZXNzIFJlZ3Jlc3Npb24gYW5kIGNvbXB1dGVzIHByZWRpY3RlZCBtZWFuIGFuZCB1bmNlcnRhaW50eSBib3VuZHMuIgogICAgICAgICAgICAgICAgdmlzdWFsaXphdGlvbiA9IGNvbXBvbmVudCAiUHJlZGljdGlvbiBhbmQgdW5jZXJ0YWludHkgdmlzdWFsaXphdGlvbiIgIlJlbmRlcnMgb3JpZ2luYWwgZGF0YSwgcHJlZGljdGVkIGN1cnZlLCBhbmQgdW5jZXJ0YWludHkgZXN0aW1hdGVzIGZvciBpbnRlcnByZXRhdGlvbi4iCiAgICAgICAgICAgICAgICBleHBvcnRHZW5lcmF0aW9uID0gY29tcG9uZW50ICJFeHBvcnQgZ2VuZXJhdGlvbiIgIkJ1aWxkcyByZXN1bHQgQ1NWLCBwbG90IG91dHB1dCwgYW5kIHJlcHJvZHVjaWJpbGl0eSBtZXRhZGF0YSBmcm9tIHRoZSBhY3RpdmUgYW5hbHlzaXMgc3RhdGUuIgogICAgICAgICAgICB9CgogICAgICAgICAgICBhbmFseXNpc1Nlc3Npb24gPSBjb250YWluZXIgIkluLW1lbW9yeSBBbmFseXNpcyBTZXNzaW9uIiAiRXBoZW1lcmFsIGFjdGl2ZS1zZXNzaW9uIHN0YXRlIGZvciB1cGxvYWRlZCBkYXRhLCBzZWxlY3RlZCB2YXJpYWJsZXMsIHNldHRpbmdzLCBwcmVkaWN0aW9uIHJlc3VsdHMsIHZpc3VhbGl6YXRpb24gbWV0YWRhdGEsIGFuZCBleHBvcnQgcGF5bG9hZHMuIiAiU3RyZWFtbGl0IHNlc3Npb24gc3RhdGUsIFB5dGhvbiBvYmplY3RzIgogICAgICAgIH0KCiAgICAgICAgcmVzZWFyY2hlciAtPiBzdHJlYW1saXRBcHAgIlVzZXMgdG8gcnVuIGFuIGFuYWx5c2lzIgogICAgICAgIHJlc2VhcmNoZXIgLT4gd29ya2Zsb3dVaSAiSW50ZXJhY3RzIHdpdGggdGhlIGFuYWx5c2lzIHdvcmtmbG93IgogICAgICAgIHJlc2VhcmNoZXIgLT4gbG9jYWxGaWxlU3lzdGVtICJTZWxlY3RzIENTViBmaWxlcyBmcm9tIGFuZCBzYXZlcyBkb3dubG9hZGVkIGFydGlmYWN0cyB0byIKICAgICAgICBsb2NhbEZpbGVTeXN0ZW0gLT4gc3RyZWFtbGl0QXBwICJQcm92aWRlcyB1cGxvYWRlZCBDU1YgY29udGVudCIKICAgICAgICBzdHJlYW1saXRBcHAgLT4gbG9jYWxGaWxlU3lzdGVtICJQcm92aWRlcyBkb3dubG9hZGVkIHJlc3VsdHMsIHBsb3QsIGFuZCBtZXRhZGF0YSIKCiAgICAgICAgd29ya2Zsb3dVaSAtPiBjc3ZWYWxpZGF0aW9uICJTdWJtaXRzIHVwbG9hZGVkIENTViBjb250ZW50IGZvciB2YWxpZGF0aW9uIgogICAgICAgIGNzdlZhbGlkYXRpb24gLT4gYW5hbHlzaXNTZXNzaW9uICJTdG9yZXMgYWNjZXB0ZWQgZGF0YXNldCIKICAgICAgICB3b3JrZmxvd1VpIC0+IHNldHRpbmdzUHJlcGFyYXRpb24gIlN1Ym1pdHMgdmFyaWFibGUgY2hvaWNlcyBhbmQgbW9kZWwgc2V0dGluZ3MiCiAgICAgICAgc2V0dGluZ3NQcmVwYXJhdGlvbiAtPiBhbmFseXNpc1Nlc3Npb24gIlN0b3JlcyBzZWxlY3RlZCB2YXJpYWJsZXMgYW5kIHNldHRpbmdzIgogICAgICAgIHdvcmtmbG93VWkgLT4gZ3ByRml0dGluZyAiUmVxdWVzdHMgbW9kZWwgZml0dGluZyBmb3IgdmFsaWQgYW5hbHlzaXMgaW5wdXRzIgogICAgICAgIGdwckZpdHRpbmcgLT4gYW5hbHlzaXNTZXNzaW9uICJSZWFkcyBhbmFseXNpcyBpbnB1dHMgYW5kIHN0b3JlcyBwcmVkaWN0aW9uIHJlc3VsdHMiCiAgICAgICAgd29ya2Zsb3dVaSAtPiB2aXN1YWxpemF0aW9uICJSZXF1ZXN0cyBwcmVkaWN0aW9uIGFuZCB1bmNlcnRhaW50eSBjaGFydCIKICAgICAgICB2aXN1YWxpemF0aW9uIC0+IGFuYWx5c2lzU2Vzc2lvbiAiUmVhZHMgZGF0YXNldCBhbmQgcHJlZGljdGlvbiByZXN1bHRzIgogICAgICAgIHdvcmtmbG93VWkgLT4gZXhwb3J0R2VuZXJhdGlvbiAiUmVxdWVzdHMgcmVzdWx0LCBwbG90LCBhbmQgbWV0YWRhdGEgZXhwb3J0cyIKICAgICAgICBleHBvcnRHZW5lcmF0aW9uIC0+IGFuYWx5c2lzU2Vzc2lvbiAiUmVhZHMgZml0dGVkIGFuYWx5c2lzIHN0YXRlIGFuZCBzdG9yZXMgZ2VuZXJhdGVkIGV4cG9ydCBwYXlsb2FkcyIKCiAgICAgICAgZGVwbG95bWVudEVudmlyb25tZW50ICJMb2NhbERlcGxveW1lbnQiIHsKICAgICAgICAgICAgZGVwbG95bWVudE5vZGUgIlVzZXItYWNjZXNzaWJsZSBQeXRob24gUnVudGltZSIgIkxvY2FsIHdvcmtzdGF0aW9uLCBsYWIgc2VydmVyLCBvciBzaW1wbGUgYXBwIGhvc3QiICJQeXRob24gMy4xMisiIHsKICAgICAgICAgICAgICAgIGRlcGxveW1lbnROb2RlICJTdHJlYW1saXQgUHJvY2VzcyIgIlN0cmVhbWxpdCBzZXJ2ZXIgcHJvY2VzcyIgIlN0cmVhbWxpdCIgewogICAgICAgICAgICAgICAgICAgIGNvbnRhaW5lckluc3RhbmNlIHN0cmVhbWxpdEFwcAogICAgICAgICAgICAgICAgICAgIGNvbnRhaW5lckluc3RhbmNlIGFuYWx5c2lzU2Vzc2lvbgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQoKICAgIHZpZXdzIHsKICAgICAgICBzeXN0ZW1Db250ZXh0IGdhdXNzaWFuRXhwbG9yZXIgIlN5c3RlbUNvbnRleHQiIHsKICAgICAgICAgICAgdGl0bGUgIlN5c3RlbSBDb250ZXh0IC0gR2F1c3NpYW4gUHJvY2VzcyBSZWdyZXNzaW9uIFdlYiBBcHBsaWNhdGlvbiIKICAgICAgICAgICAgZGVzY3JpcHRpb24gIlNob3dzIHRoZSByZXNlYXJjaGVyLCB0aGUgYXBwbGljYXRpb24sIGFuZCB0aGUgbG9jYWwgZmlsZS1zeXN0ZW0gYm91bmRhcnkgZm9yIHVwbG9hZHMgYW5kIGRvd25sb2Fkcy4iCiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvTGF5b3V0IGxyCiAgICAgICAgfQoKICAgICAgICBjb250YWluZXIgZ2F1c3NpYW5FeHBsb3JlciAiQ29udGFpbmVycyIgewogICAgICAgICAgICB0aXRsZSAiQ29udGFpbmVycyAtIEdhdXNzaWFuIFByb2Nlc3MgUmVncmVzc2lvbiBXZWIgQXBwbGljYXRpb24iCiAgICAgICAgICAgIGRlc2NyaXB0aW9uICJTaG93cyB0aGUgc2luZ2xlIFN0cmVhbWxpdCBydW50aW1lIGNvbnRhaW5lciBhbmQgaXRzIGVwaGVtZXJhbCBpbi1tZW1vcnkgYW5hbHlzaXMgc3RhdGUuIgogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b0xheW91dCBscgogICAgICAgIH0KCiAgICAgICAgY29tcG9uZW50IHN0cmVhbWxpdEFwcCAiU3RyZWFtbGl0Q29tcG9uZW50cyIgewogICAgICAgICAgICB0aXRsZSAiQ29tcG9uZW50cyAtIFN0cmVhbWxpdCBXZWIgQXBwbGljYXRpb24iCiAgICAgICAgICAgIGRlc2NyaXB0aW9uICJTaG93cyB0aGUgaW50ZXJuYWwgcmVzcG9uc2liaWxpdGllcyBvd25lZCBieSB0aGUgU3RyZWFtbGl0IGFwcGxpY2F0aW9uIGNvbnRhaW5lci4iCiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvTGF5b3V0IGxyCiAgICAgICAgfQoKICAgICAgICBkeW5hbWljIHN0cmVhbWxpdEFwcCAiTWFpbkFuYWx5c2lzRmxvdyIgewogICAgICAgICAgICB0aXRsZSAiRHluYW1pYyAtIE1haW4gQW5hbHlzaXMgRmxvdyIKICAgICAgICAgICAgZGVzY3JpcHRpb24gIlNob3dzIHRoZSBwcmltYXJ5IHVwbG9hZCwgc2VsZWN0aW9uLCBmaXR0aW5nLCB2aXN1YWxpemF0aW9uLCBhbmQgZXhwb3J0IGludGVyYWN0aW9uIHNlcXVlbmNlLiIKICAgICAgICAgICAgcmVzZWFyY2hlciAtPiB3b3JrZmxvd1VpICJVcGxvYWRzIENTViIKICAgICAgICAgICAgd29ya2Zsb3dVaSAtPiBjc3ZWYWxpZGF0aW9uICJQYXJzZXMgYW5kIHZhbGlkYXRlcyB1cGxvYWQiCiAgICAgICAgICAgIGNzdlZhbGlkYXRpb24gLT4gYW5hbHlzaXNTZXNzaW9uICJTdG9yZXMgYWNjZXB0ZWQgZGF0YXNldCIKICAgICAgICAgICAgcmVzZWFyY2hlciAtPiB3b3JrZmxvd1VpICJTZWxlY3RzIHZhcmlhYmxlcyBhbmQgR1BSIHNldHRpbmdzIgogICAgICAgICAgICB3b3JrZmxvd1VpIC0+IHNldHRpbmdzUHJlcGFyYXRpb24gIlZhbGlkYXRlcyBjaG9pY2VzIGFuZCBzZXR0aW5ncyIKICAgICAgICAgICAgc2V0dGluZ3NQcmVwYXJhdGlvbiAtPiBhbmFseXNpc1Nlc3Npb24gIlN0b3JlcyBhbmFseXNpcyBpbnB1dHMiCiAgICAgICAgICAgIHJlc2VhcmNoZXIgLT4gd29ya2Zsb3dVaSAiRml0cyBtb2RlbCIKICAgICAgICAgICAgd29ya2Zsb3dVaSAtPiBncHJGaXR0aW5nICJSZXF1ZXN0cyBHUFIgZml0IGFuZCBwcmVkaWN0aW9uIgogICAgICAgICAgICBncHJGaXR0aW5nIC0+IGFuYWx5c2lzU2Vzc2lvbiAiU3RvcmVzIHByZWRpY3Rpb24gcmVzdWx0cyIKICAgICAgICAgICAgd29ya2Zsb3dVaSAtPiB2aXN1YWxpemF0aW9uICJSZW5kZXJzIHZpc3VhbGl6YXRpb24iCiAgICAgICAgICAgIHJlc2VhcmNoZXIgLT4gd29ya2Zsb3dVaSAiUmVxdWVzdHMgZXhwb3J0cyIKICAgICAgICAgICAgd29ya2Zsb3dVaSAtPiBleHBvcnRHZW5lcmF0aW9uICJCdWlsZHMgZXhwb3J0IGFydGlmYWN0cyIKICAgICAgICAgICAgYXV0b0xheW91dCBscgogICAgICAgIH0KCiAgICAgICAgZGVwbG95bWVudCBnYXVzc2lhbkV4cGxvcmVyICJMb2NhbERlcGxveW1lbnQiICJMb2NhbERlcGxveW1lbnQiIHsKICAgICAgICAgICAgdGl0bGUgIkRlcGxveW1lbnQgLSBMb2NhbCBvciBTaW5nbGUtUHJvY2VzcyBTdHJlYW1saXQgUnVudGltZSIKICAgICAgICAgICAgZGVzY3JpcHRpb24gIlNob3dzIHRoZSBNVlAgZGVwbG95bWVudCBhc3N1bXB0aW9uOiBvbmUgU3RyZWFtbGl0IHByb2Nlc3Mgd2l0aCBpbi1wcm9jZXNzIHNlc3Npb24gc3RhdGUuIgogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b0xheW91dCBscgogICAgICAgIH0KCiAgICAgICAgc3R5bGVzIHsKICAgICAgICAgICAgZWxlbWVudCAiUGVyc29uIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBwZXJzb24KICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzBiNWY2YQogICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIlNvZnR3YXJlIFN5c3RlbSIgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjMzQ1OTk1CiAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiQ29udGFpbmVyIiB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICM0ZjdjYWMKICAgICAgICAgICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50ICJDb21wb25lbnQiIHsKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzllYzVhYgogICAgICAgICAgICAgICAgY29sb3IgIzAwMDAwMAogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkV4dGVybmFsIiB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICM2ZDZkNmQKICAgICAgICAgICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KfQ==",
+    "structurizr.inspection.info" : "0",
+    "structurizr.inspection.ignore" : "0",
+    "structurizr.inspection.warning" : "0"
+  },
+  "views" : {
+    "componentViews" : [ {
+      "automaticLayout" : {
+        "edgeSeparation" : 50,
+        "nodeSeparation" : 50,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 100,
+        "vertices" : true
+      },
+      "containerId" : "4",
+      "description" : "Shows the internal responsibilities owned by the Streamlit application container.",
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "5",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "6",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "7",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "8",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "9",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "10",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "11",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "externalContainerBoundariesVisible" : false,
+      "key" : "StreamlitComponents",
+      "name" : "Component View: Gaussian Process Regression Web Application - Streamlit Web Application",
+      "order" : 3,
+      "relationships" : [ {
+        "id" : "14"
+      }, {
+        "id" : "20"
+      }, {
+        "id" : "21"
+      }, {
+        "id" : "23"
+      }, {
+        "id" : "24"
+      }, {
+        "id" : "25"
+      }, {
+        "id" : "26"
+      }, {
+        "id" : "27"
+      }, {
+        "id" : "28"
+      }, {
+        "id" : "29"
+      }, {
+        "id" : "30"
+      } ],
+      "title" : "Components - Streamlit Web Application"
+    } ],
+    "configuration" : {
+      "styles" : {
+        "elements" : [ {
+          "background" : "#9ec5ab",
+          "color" : "#000000",
+          "tag" : "Component"
+        }, {
+          "background" : "#4f7cac",
+          "color" : "#ffffff",
+          "tag" : "Container"
+        }, {
+          "background" : "#6d6d6d",
+          "color" : "#ffffff",
+          "tag" : "External"
+        }, {
+          "background" : "#0b5f6a",
+          "color" : "#ffffff",
+          "shape" : "Person",
+          "tag" : "Person"
+        }, {
+          "background" : "#345995",
+          "color" : "#ffffff",
+          "tag" : "Software System"
+        } ]
+      },
+      "terminology" : { }
+    },
+    "containerViews" : [ {
+      "automaticLayout" : {
+        "edgeSeparation" : 50,
+        "nodeSeparation" : 50,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 100,
+        "vertices" : true
+      },
+      "description" : "Shows the single Streamlit runtime container and its ephemeral in-memory analysis state.",
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "4",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "11",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "Containers",
+      "name" : "Container View: Gaussian Process Regression Web Application",
+      "order" : 2,
+      "relationships" : [ {
+        "id" : "12"
+      }, {
+        "id" : "15"
+      }, {
+        "id" : "16"
+      }, {
+        "id" : "18"
+      }, {
+        "id" : "22"
+      } ],
+      "softwareSystemId" : "3",
+      "title" : "Containers - Gaussian Process Regression Web Application"
+    } ],
+    "deploymentViews" : [ {
+      "automaticLayout" : {
+        "edgeSeparation" : 50,
+        "nodeSeparation" : 50,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 100,
+        "vertices" : true
+      },
+      "description" : "Shows the MVP deployment assumption: one Streamlit process with in-process session state.",
+      "elements" : [ {
+        "id" : "31",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "32",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "33",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "34",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "environment" : "LocalDeployment",
+      "key" : "LocalDeployment",
+      "name" : "Deployment View: Gaussian Process Regression Web Application - LocalDeployment",
+      "order" : 5,
+      "relationships" : [ {
+        "id" : "35"
+      } ],
+      "softwareSystemId" : "3",
+      "title" : "Deployment - Local or Single-Process Streamlit Runtime"
+    } ],
+    "dynamicViews" : [ {
+      "automaticLayout" : {
+        "edgeSeparation" : 50,
+        "nodeSeparation" : 50,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 100,
+        "vertices" : true
+      },
+      "description" : "Shows the primary upload, selection, fitting, visualization, and export interaction sequence.",
+      "elementId" : "4",
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "5",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "6",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "7",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "8",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "9",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "10",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "11",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "externalBoundariesVisible" : false,
+      "key" : "MainAnalysisFlow",
+      "name" : "Dynamic View: Gaussian Process Regression Web Application - Streamlit Web Application",
+      "order" : 4,
+      "relationships" : [ {
+        "description" : "Uploads CSV",
+        "id" : "14",
+        "order" : "1",
+        "response" : false
+      }, {
+        "description" : "Parses and validates upload",
+        "id" : "20",
+        "order" : "2",
+        "response" : false
+      }, {
+        "description" : "Stores accepted dataset",
+        "id" : "21",
+        "order" : "3",
+        "response" : false
+      }, {
+        "description" : "Selects variables and GPR settings",
+        "id" : "14",
+        "order" : "4",
+        "response" : false
+      }, {
+        "description" : "Validates choices and settings",
+        "id" : "23",
+        "order" : "5",
+        "response" : false
+      }, {
+        "description" : "Stores analysis inputs",
+        "id" : "24",
+        "order" : "6",
+        "response" : false
+      }, {
+        "description" : "Fits model",
+        "id" : "14",
+        "order" : "7",
+        "response" : false
+      }, {
+        "description" : "Requests GPR fit and prediction",
+        "id" : "25",
+        "order" : "8",
+        "response" : false
+      }, {
+        "description" : "Stores prediction results",
+        "id" : "26",
+        "order" : "9",
+        "response" : false
+      }, {
+        "description" : "Renders visualization",
+        "id" : "27",
+        "order" : "10",
+        "response" : false
+      }, {
+        "description" : "Requests exports",
+        "id" : "14",
+        "order" : "11",
+        "response" : false
+      }, {
+        "description" : "Builds export artifacts",
+        "id" : "29",
+        "order" : "12",
+        "response" : false
+      } ],
+      "title" : "Dynamic - Main Analysis Flow"
+    } ],
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "edgeSeparation" : 50,
+        "nodeSeparation" : 50,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 100,
+        "vertices" : true
+      },
+      "description" : "Shows the researcher, the application, and the local file-system boundary for uploads and downloads.",
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "3",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "key" : "SystemContext",
+      "name" : "System Context View: Gaussian Process Regression Web Application",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "13"
+      }, {
+        "id" : "15"
+      }, {
+        "id" : "17"
+      }, {
+        "id" : "19"
+      } ],
+      "softwareSystemId" : "3",
+      "title" : "System Context - Gaussian Process Regression Web Application"
+    } ]
+  }
+}

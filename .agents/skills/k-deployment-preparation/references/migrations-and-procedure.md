@@ -1,29 +1,17 @@
 # Migrations and Deployment Procedure
 
-## Migrations
+Tie every migration to an owning data-store or infrastructure container and verify it against the approved deployment and runtime architecture.
 
-For each database, data, configuration, or infrastructure migration, record:
+Record:
 
-- purpose and affected systems;
-- prerequisites and backup requirements;
-- compatibility with the current and new release;
-- execution order and expected duration;
-- expected service impact;
-- verification and failure signals;
-- recovery approach;
-- responsible owner.
+- prerequisites and backups;
+- compatibility window;
+- migration order;
+- application, worker, data-store, cache, broker, and external-integration order;
+- quality or risk conditions that affect sequencing;
+- exact commands only when repository-supported and reviewed;
+- pause and abort conditions;
+- verification after each major step;
+- owner and decision authority.
 
-Do not assume reversibility. State whether recovery uses rollback, restoration, replay, or a forward correction.
-
-## Deployment procedure
-
-Use ordered steps with:
-
-- responsible role;
-- prerequisite;
-- action;
-- expected result;
-- verification;
-- failure or pause condition.
-
-Commands must come from verified repository or operational documentation. Mark unknown commands as unresolved rather than generating plausible commands.
+Unknown commands or unsafe migration behavior are blockers, not placeholders to invent.

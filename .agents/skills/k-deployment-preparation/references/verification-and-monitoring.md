@@ -1,17 +1,22 @@
 # Verification, Monitoring, and Communication
 
-Select a minimal set of critical post-deployment checks:
+Derive post-deployment verification from:
 
-- expected artifact or version is active;
-- service and dependency health checks pass;
-- critical user or operational workflow succeeds;
-- migrations completed and data remains consistent;
-- external integrations respond as expected;
-- critical logs and alerts show no new failures;
-- agreed key indicators remain within known limits.
+- critical accepted behavior;
+- automated test evidence;
+- arc42 runtime and deployment views;
+- cross-cutting logging, monitoring, security, and error-handling concepts;
+- quality scenarios and measurable thresholds;
+- known architecture risks and accepted limitations.
 
-Record the observation period, evidence source, expected result, failure threshold, and owner.
+For each affected deployment unit, record:
 
-Reuse evidence and test definitions from Skills I and J where appropriate. Do not rerun the complete testing or validation programme as part of deployment preparation.
+- health and readiness checks;
+- smoke or synthetic checks;
+- metrics, logs, traces, alerts, and dashboards;
+- expected values or approved thresholds;
+- observation window;
+- owner and escalation path;
+- communication before, during, and after deployment.
 
-Document communication recipients, timing, success notification, failure notification, incident escalation, and maintenance-window expectations.
+Do not invent thresholds or monitoring resources that are not approved or available.

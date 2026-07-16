@@ -1,40 +1,12 @@
 # Input and Publication Gate
 
-## Eligible story issue
+For each user-story issue, verify:
 
-Require all of the following:
+- Active story ID and current story version.
+- Product approval, architecture approval, technical review ID, `implementation-ready` status, and human technical approval.
+- Architecture scope from traceability: arc42 concerns, software system, container, component or data model, runtime/deployment concern when relevant, and decisions.
+- No existing linked issue or unresolved candidate match.
 
-- current story identifier and story version;
-- current architecture version;
-- applicable technical review identifier;
-- per-story status `implementation-ready`;
-- explicit human technical approval covering that story and those versions;
-- no newer overlapping technical review or stale upstream approval.
+For each spike issue, verify the approved spike candidate and source review.
 
-## Eligible spike issue
-
-Require an explicit spike candidate in the technical-readiness report and human authorization to publish it.
-
-## Other work types
-
-Publish architecture changes, migrations, enabling work, or dependencies only when an authoritative upstream artifact defines their purpose and scope. Do not infer them while formatting an issue.
-
-## Issue lineage
-
-For user-story issues, preserve the canonical user-story block as the visible issue description. Do not add a separate visible traceability section that changes the user-story format.
-
-Include the machine-readable marker after the copied story block:
-
-```html
-<!-- workflow-link
-source-type: user-story
-source-identifier: US-0001
-story-version: 1.0
-architecture-version: 1.0
-technical-review-identifier: TR-001
-publication-batch-identifier: publication-001
-documentation-revision: <repository-revision>
--->
-```
-
-The documentation revision should identify the repository revision containing the source documents when available.
+Confirm repository, platform, account, write permission, templates, labels, and contribution rules. Stop when any required lineage or approval is stale or contradictory.

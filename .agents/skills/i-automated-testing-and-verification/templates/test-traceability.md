@@ -1,4 +1,4 @@
 # Automated Test Traceability
 
-| Story or Requirement | Behavior or Risk | Test Category | Test Reference | Verification Status | Evidence Type | Evidence Reference | Notes |
-|---|---|---|---|---|---|---|---|
+| Story ID | Acceptance reference | arc42 concern | Software system | Container | Component or data model | Quality scenario or risk | Test category | Test or suite | Status | Evidence |
+|---|---|---|---|---|---|---|---|---|---|---|

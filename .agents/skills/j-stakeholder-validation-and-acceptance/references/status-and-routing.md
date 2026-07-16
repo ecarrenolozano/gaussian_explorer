@@ -1,30 +1,24 @@
 # Status and Routing
 
-## Behavior result
-
-Use one:
+Behavior result:
 
 - `met`;
 - `not-met`;
 - `blocked`;
 - `not-executed`.
 
-## Stakeholder disposition
-
-Use one:
+Stakeholder disposition:
 
 - `accepted`;
 - `rejected`;
 - `accepted-by-explicit-waiver`;
 - `pending`.
 
-A waiver must record the exact deviation, impact, mitigation, owner, approver, date, and review condition when applicable.
+Route:
 
-## Routing
-
-- implementation violates approved behavior -> implementation, then Skill I retesting;
-- implementation plan must change -> Skill H;
-- automated evidence missing -> Skill I;
-- story or acceptance criterion defective -> Skill C, then Skill D;
-- requirement missing or new behavior requested -> Skill B;
-- architecture prevents required behavior -> Skill E, then downstream reassessment.
+- implementation defect to implementation and Skill I;
+- implementation-plan defect to Skill H;
+- missing automated evidence to Skill I;
+- story or acceptance defect to Skills C and D;
+- missing or new product behavior to Skill B;
+- architecture limitation to Skill E and downstream reassessment.

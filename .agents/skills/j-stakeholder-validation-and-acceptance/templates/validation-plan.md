@@ -1,28 +1,26 @@
-# Manual Validation Plan
+# Stakeholder Validation Plan
 
-## Current State
+<!-- validation-plan | release-candidate: <artifact> | story-version: 1.0 | mode: release-candidate-validation -->
 
-- Validation mode:
-- Story version:
-- In-scope stories:
-- Release candidate:
-- Automated testing evidence:
-- Environment:
-- Evaluator:
-- Authorized decision-maker:
-- Date:
+## Scope
 
-## Entry Criteria
+## Testing Evidence
 
-## Validation Scenarios
+## Environment and Participants
 
-### <Story and criterion>
+## Architecture Context Needed for Setup
 
-- Purpose:
-- Prerequisites:
+| Story ID | arc42 concern | Application, data store, or external system | Runtime, deployment, quality, or risk condition | Reason relevant to validation |
+|---|---|---|---|---|
+
+## Manual Validation Scenarios
+
+### <Scenario>
+
+- Story and acceptance reference:
+- User role:
 - Test data:
+- Environment and dependencies:
 - Evaluator actions:
 - Expected behavior:
 - Evidence required:
-
-## Exit Criteria

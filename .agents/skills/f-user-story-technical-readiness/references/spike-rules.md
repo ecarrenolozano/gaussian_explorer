@@ -1,20 +1,15 @@
-# Technical Spike Candidate Rules
+# Technical Spike Rules
 
-Load only when Step 5 assigns `needs-technical-spike`.
+Create a spike candidate only when a bounded investigation must answer a decision-relevant question that cannot be resolved from existing evidence.
 
-A spike is appropriate only when a specific decision cannot be made responsibly from current evidence. It must reduce uncertainty, not deliver production functionality.
+Include:
 
-Use `templates/technical-spike-candidate.md` and define:
+- question;
+- decision enabled;
+- scope and exclusions;
+- expected evidence;
+- time or effort boundary when known;
+- affected stories and architecture elements;
+- completion condition.
 
-- one decision-oriented question;
-- why existing story, architecture, repository, or environment evidence is insufficient;
-- affected story IDs and architecture elements;
-- a bounded time box or effort limit supplied by the team, or `Unconfirmed` when absent;
-- explicit investigation boundaries;
-- required evidence, prototype, benchmark, compatibility check, recommendation, or ADR input;
-- a completion condition tied to making a decision;
-- the route after completion.
-
-Do not invent a time box, success threshold, tool, or implementation approach. Do not use a spike for routine coding, detailed design that can be decided normally, or work already required by an implementation story.
-
-This skill records a spike candidate only. `g-create-repository-issues` owns publication and repository identifiers.
+Do not use a spike to hide ordinary implementation, missing product decisions, or architecture work that Skill E should perform.
