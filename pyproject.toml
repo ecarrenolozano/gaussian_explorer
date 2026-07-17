@@ -13,6 +13,12 @@ authors = [
 ]
 license = { text = "MIT" }
 dependencies = [
+  "numpy>=2.5.1",
+  "pandas>=3.0.3",
+  "panel>=1.9.3",
+  "plotly>=6.9.0",
+  "scikit-learn>=1.9.0",
+  "scipy>=1.18.0",
   "streamlit>=1.36",
 ]
 

@@ -1,0 +1,10 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "create-validation-module",
+			"type": "shell",
+			"command": "mkdir -p src/gaussian_explorer && touch src/gaussian_explorer/validation.py"
+		}
+	]
+}

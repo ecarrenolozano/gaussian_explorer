@@ -1,38 +1,37 @@
-# Gaussian Explorer
+# Gaussian Process Regression Explorer — Panel
 
-A Python project developed with an AI-assisted, approval-gated SDLC workflow.
-
-## Development approach
-
-This repository follows an AI-assisted, documentation-driven software development lifecycle. AI may support analysis, planning, implementation, testing, and documentation, but designated artifacts require human approval before work proceeds to the next stage.
-
-Start with [`sdlc_docs/00_project_context/project_context.md`](sdlc_docs/00_project_context/project_context.md) and consult [`WORKFLOW.md`](WORKFLOW.md) for the complete sequence.
-
-## Setup
+## Install
 
 ```bash
-uv sync --all-groups
-uv run pre-commit install
+uv pip install panel plotly pandas numpy scipy scikit-learn joblib
 ```
 
-## Quality checks
+## Run
 
 ```bash
-uv run pytest
-uv run ruff check .
-uv run ruff format --check .
-uv run mypy src
+PYTHONPATH=src panel serve src/gaussian_explorer/app.py --show --autoreload
 ```
 
-## Documentation
+## New inference capabilities
 
-```bash
-uv run mkdocs serve
+After fitting a model, the application can:
+
+- predict one new X value;
+- predict multiple comma-, space-, or line-separated X values;
+- return predicted mean, predictive standard deviation, confidence bounds, and IID/OOD status;
+- export inference results as CSV;
+- download the complete fitted model as a versioned joblib artifact.
+
+## Reuse an exported model
+
+Only load model artifacts from trusted sources. Joblib uses pickle-based serialization and may execute code during loading.
+
+```python
+from gaussian_explorer.persistence import load_model_artifact
+
+artifact = load_model_artifact("gaussian_process_model.joblib")
+result = artifact.predict_one(4.2)
+print(result)
 ```
 
-## Project metadata
-
-- **Type:** application
-- **Python:** 3.12+
-- **Author:** Your Name <name@example.org>
-- **License:** MIT
+The artifact records the selected variables, training domain, model settings, initial and fitted kernel descriptions, source hash, and package versions used during fitting.

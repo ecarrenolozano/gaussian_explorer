@@ -2,7 +2,7 @@ from io import BytesIO, StringIO
 
 import pytest
 
-from gaussian_explorer.data import CsvUploadError, load_uploaded_csv
+from gaussian_explorer.data import CsvUploadError, load_uploaded_csv, MAX_UPLOAD_BYTES, SUPPORTED_UPLOAD_SUFFIXES
 
 
 def test_loads_supported_csv_from_bytes() -> None:
@@ -39,3 +39,20 @@ def test_rejects_csv_without_data_rows() -> None:
 def test_rejects_duplicate_column_names() -> None:
     with pytest.raises(CsvUploadError, match="unique column names"):
         load_uploaded_csv("x,x\n1,2\n")
+
+
+def test_rejects_unsupported_file_suffix() -> None:
+    with pytest.raises(CsvUploadError, match="Unsupported file type"):
+        load_uploaded_csv(b"x,y\n1,2\n", filename="data.txt")
+
+
+def test_rejects_large_file_by_bytes() -> None:
+    large_content = b"x,y\n" + b"1,2\n" * (MAX_UPLOAD_BYTES // 4)
+    with pytest.raises(CsvUploadError, match="File too large"):
+        load_uploaded_csv(large_content, filename="large.csv")
+
+
+def test_rejects_large_file_by_text() -> None:
+    large_content = "x,y\n" + "1,2\n" * (MAX_UPLOAD_BYTES // 4)
+    with pytest.raises(CsvUploadError, match="File too large"):
+        load_uploaded_csv(large_content, filename="large.csv")

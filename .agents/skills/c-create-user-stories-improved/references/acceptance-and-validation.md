@@ -101,3 +101,21 @@ Use this metadata comment immediately below each story heading:
 ```
 
 Use comma-separated source-batch identifiers only when one story legitimately traces to multiple batches. Allowed lifecycle values are `active` and `deprecated`.
+
+
+## Interaction-State Validation
+
+When the source describes configurable or reactive behavior, verify scenarios for supported state transitions, including:
+
+- enabled versus disabled modes;
+- initial versus fitted/effective values;
+- fixed versus optimized parameters;
+- refit or live-update behavior after a setting changes;
+- stale-result indication;
+- reset or restore behavior.
+
+Do not require all scenarios universally. Include them when the handoff or project context supports the behavior.
+
+## Coverage Validation
+
+Before assigning identifiers, verify that every source statement has a provisional coverage disposition and that the candidate story does not absorb unrelated NFRs, decisions, or implementation tasks.

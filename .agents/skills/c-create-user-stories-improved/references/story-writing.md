@@ -72,3 +72,19 @@ Generate a story only when its actor, core behavior, value, and scope are suppor
 ## Duplicate Prevention
 
 Compare candidate outcomes with active existing stories. Do not create a new story when an existing story expresses the same actor, capability, value, and scope. Add traceability only when the existing story legitimately covers the new source batch and the user requested consolidation; otherwise report the overlap.
+
+
+## Story Versus Decision Versus NFR
+
+Before drafting, ask:
+
+- Does this deliver an observable outcome to a supported actor? Write a user story.
+- Does this compare technologies, validate feasibility, or choose architecture? Write a decision item.
+- Does this constrain quality across several stories? Record an NFR and measurable acceptance evidence.
+- Does this only describe implementation work? Do not create a user story.
+
+Do not compress distinct model lifecycle behavior into one generic configuration story when the source supports separate outcomes. Examples include selecting a covariance function, exposing function-specific hyperparameters, controlling optimization, viewing effective fitted values, predicting new inputs, and exporting a reusable model.
+
+## Vague Language
+
+Terms such as `sensible`, `small`, `modular`, `interactive`, `reproduce later`, and `properly` are not acceptance criteria. Preserve them as open questions until the handoff supplies measurable or observable meaning.

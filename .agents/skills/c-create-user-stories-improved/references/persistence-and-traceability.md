@@ -8,6 +8,8 @@ Update these files as one consistent change:
 
 - `sdlc_docs/01_requirements/01_user_stories.md`
 - `sdlc_docs/01_requirements/02_traceability_matrix.md`
+- `sdlc_docs/01_requirements/03_decision_backlog.md`
+- `sdlc_docs/01_requirements/04_requirement_coverage.md`
 
 If a file is missing, create it from its template. If it exists, preserve its content and add only the sections or entries required by this skill.
 
@@ -120,3 +122,14 @@ Before finishing, confirm that:
 - one revision row records the content change;
 - unresolved questions remain visible;
 - no unsupported or implementation-specific content was added.
+
+
+## Decision Backlog
+
+Maintain stable `DI-XXXX` identifiers. Preserve resolved decisions and their rationale. A decision item may block implementation planning without blocking user-story generation.
+
+## Requirement Coverage
+
+Maintain one row per meaningful source statement. Use stable `RC-XXXX` identifiers. A row must identify the statement classification, disposition, linked artifact, and status. Coverage may point to a story, decision item, NFR section, open question, exclusion, or existing artifact.
+
+Do not mark a batch complete while meaningful source statements remain unclassified or uncovered.
