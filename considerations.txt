@@ -1,0 +1,69 @@
+---
+
+---
+
+# <Skills name>
+
+## Purpose
+
+## Inputs
+
+## Outputs
+
+## Core Workflow
+
+1.
+2.
+3.
+
+### Step 1. <named step>
+
+### Step 2. <named step>
+
+### Step 2. <named step>
+
+
+
+Points to clarify with the complete workflow
+
+- Add mechanism to write approval for some stages in the workflow
+
+[repo issues]
+- Once all the users stories are approved and I create the repository Issues for instance github issues. How those issues are connected to the sdlc_docs documentation?
+- What happen if someone create issues in Github directly, our documentation is not updated.
+
+[implementation planning]
+- Not clear the prioritization graph for the kanban
+
+[implementation helper]
+- Workflow
+    - read an implementation plan
+    - constrast the plan with the current code and tests.
+    - Create subagents:
+        - Tester: create tests
+        - Developer: create code to pass the tests
+[testing]
+- The testing skill should create those categories of tests if applicable:
+    - Integration tests
+    - E2E tests
+    - Regression tests
+- Template to organize tests in each test module
+    - Fixtures
+    - Classes
+    - Functions
+    
+
+[validation]
+- Which skill should generate acceptance criteria by using Gherkin syntax.
+- Manual tests are part of the Validation skill, they involve the acceptance criteria.
+
+[other considerations]
+- Create symbolic links for the skills folder (it can be an script).
+- Scenarios
+    - Starting a scalable software project from scratch.
+    - Refactoring existing code.
+    - Verify an idea quickly
+
+
+- Review duplication in reactome dataset and protein interaction datasets
+    Add documentation to the zenodo dataset reactome
